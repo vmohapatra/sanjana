@@ -1,10 +1,12 @@
 {
-    "name": "sanjanaapp",
+    "name": "sanjana",
     "version": "1.0.0",
     "description": "Sanjana's School Record Managing System",
+    "private": true,
+    "homepage": "https://github.com/vmohapatra/sanjana",
     "main": "app.js",
     "scripts": {
-        "test": "hello sanjanaapp"
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [
         "School",
@@ -13,6 +15,10 @@
         "System"
     ],
     "author": "vmohapatra",
+    "repository": {
+    "type": "git",
+    "url": "git://github.com/vmohapatra/sanjana.git"
+    },
     "license": "MIT",
     "dependencies": {
         "express": "^4.13.4",
