@@ -1,0 +1,25 @@
+{
+    "name": "sanjanaapp",
+    "version": "1.0.0",
+    "description": "Sanjana's School Record Managing System",
+    "main": "app.js",
+    "scripts": {
+        "test": "hello sanjanaapp"
+    },
+    "keywords": [
+        "School",
+        "Record",
+        "Managing",
+        "System"
+    ],
+    "author": "vmohapatra",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.13.4",
+        "express-handlebars": "^2.0.1",
+        "express3-handlebars": "^0.5.2",
+        "hbs": "^4.0.0",
+        "mongodb": "^2.0.49"
+    },
+    "devDependencies": {}
+}

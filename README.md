@@ -17,7 +17,7 @@ $ npm install express --save
 To install Express temporarily and not add it to the dependencies list, omit the --save option:
 $ npm install express
 
-To add all the dependencies in the app 
+To add all the dependencies in the app:
 $ npm install
 
 
