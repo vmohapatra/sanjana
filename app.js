@@ -25,12 +25,13 @@ hbs.registerPartials(__dirname + '/views/partials');
 app.get('/', function (req, res) {
     //Sets a string as a response to get '/'
     //res.send('Hello World!');
-    //Renders min.hbs from views/layouts folder
+    //Renders main.hbs from views/layouts folder
     res.render(app.get('views') + '/layouts/'+ 'main');
     //Renders static html file stored under static folder when appending '/static' to path
     //res.sendFile(path.join('/static/views/landing.html'));
 });
 
 app.listen(config.http_port, function () {
-  console.log('Example app listening on port : '+config.http_port);
+  console.log('App listening on port : '+config.http_port);
+  console.log('Please access app at http://localhost:'+config.http_port);
 })
