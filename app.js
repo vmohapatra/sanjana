@@ -4,6 +4,8 @@ var hbs = require('hbs');
 var MongoClient = require('mongodb').MongoClient;
 var expressHbs = require('express3-handlebars');
 
+var config = require('./config');
+
 var app = express();
 
 app.use(express.static('static'));
@@ -29,6 +31,6 @@ app.get('/', function (req, res) {
     //res.sendFile(path.join('/static/views/landing.html'));
 });
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+app.listen(config.http_port, function () {
+  console.log('Example app listening on port : '+config.http_port);
 })
