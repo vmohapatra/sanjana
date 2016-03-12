@@ -16,10 +16,7 @@ h2 {
 }
 /**********************Progress Styles**********************/
 .progress {
-    background-color: #FF6666;
-}
-.progress_1, .progress_2 {
-    background-color: #339900;
+    background-color: #FFFFFF; /*#FF6666;*/
 }
 /**********************Header Section Styles**********************/
 #div_header {
@@ -69,13 +66,30 @@ h2 {
     width: 33%;
     padding: 1%;
 }
+
 .div_sublist {
     display: none;
-    background-color: lime;
+    background-color: #00FF00; /*lime*/
+    padding: 10px;
+}
+.div_sublist_1 {
+    display: none;
+    background-color: #FFC0CB; /*pink*/
+    padding: 10px;
 }
 #content_submit {
     text-align: center;
 }
+.main_list li{
+    padding: 10px;
+}
+.main_list li h3 {
+    padding: 10px;
+}
+.hdr_l1_active {
+    background-color: #339900; /*green*/
+}
+
 /**********************Footer Section Styles**********************/
 #div_footer {
     background-color: #ffffff; /*white*/
