@@ -34,4 +34,6 @@ app.get('/', function (req, res) {
 app.listen(config.http_port, function () {
   console.log('App listening on port : '+config.http_port);
   console.log('Please access app at http://localhost:'+config.http_port);
+  console.log(config.root);
+  console.log(__dirname);
 })

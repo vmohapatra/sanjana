@@ -1,7 +1,8 @@
 'use strict';
 
 var path = require('path');
-var rootPath = path.normalize(__dirname + '/../..');
+//var rootPath = path.normalize(__dirname + '/../..');
+var rootPath = path.normalize(__dirname);
 
 var config = {};
 config.http_port = parseInt(process.argv[2]) || 54321;

@@ -1,4 +1,4 @@
-/***********Generic Tags***********/
+/**********************Generic Tags**********************/
 body {
     background-color: white;
     padding: 10px;
@@ -8,54 +8,76 @@ ul {
     list-style-type: none;
 }
 h2 {
-    color: green;
+    color: #008000; /*green*/
 }
-/***********Section Styles***********/
-#div_header {
-    background-color: white;
-    padding: 20px;
+/**********************Generic Styles**********************/
+.clear {
+    clear: both;
 }
-#header_logo {
-    background-color: green;
-    height: 30px;
-    width: 100%;
-}
-#header_progress {
-    background-color: orange;
-    padding: 5px;
-}
-.horizontal {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #FFCC00;
-}
-.horizontal li {
-    float: left;
-    list-style: outside none none;
-    padding: 1%;
-    margin: 0.5%;
-    width: 22%
-}
+/**********************Progress Styles**********************/
 .progress {
     background-color: #FF6666;
 }
 .progress_1, .progress_2 {
     background-color: #339900;
 }
+/**********************Header Section Styles**********************/
+#div_header {
+    background-color: #ffffff; /*white*/
+    padding: 10px;
+}
+#header_logo {
+    background-color: #008000; /*green*/
+    height: 30px;
+    width: 100%;
+}
+#header_welcome {
+    padding: 5px;
+}
+#header_progress {
+    /*background-color: #FFA500; /*orange*/
+    padding: 5px;
+}
+#header_progress .horizontal {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /*background-color: #FFCC00;*/
+}
+#header_progress .horizontal li {
+    float: left;
+    list-style: outside none none;
+    padding: 1%;
+    margin: 0.5%;
+    width: 22%
+}
+/**********************Content Section Styles**********************/
+#div_content {
+    background-color: #ffffff; /*white*/
+    padding: 10px;
+}
 #content_main {
     float: left;
-    background-color: white;
-    padding: 1%
-    width: 63%
+    background-color: #ffffff; /*white*/
+    padding: 1%;
+    width: 63%;
 }
 #content_sidebar {
     float: right;
-    background-color: orange;
+    background-color: #FFA500; /*orange*/
     width: 33%;
-    padding: 1%
+    padding: 1%;
 }
 .div_sublist {
     display: none;
+    background-color: lime;
+}
+#content_submit {
+    text-align: center;
+}
+/**********************Footer Section Styles**********************/
+#div_footer {
+    background-color: #ffffff; /*white*/
+    padding: 10px;
 }
