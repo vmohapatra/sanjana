@@ -35,58 +35,7 @@
                 <li class="progress progress_1">
                     <h3 id="progress_h1" class="hdr_l1 hdr_l1_active ">Level 1: Waste Reduction and Recycling</h3>
                     <div class="div_sublist" id="sublist1">
-                        <ul class="sublist_1">
-                            <li>
-                                <h3 id="progress_h1_h1" class="hdr_l1_l1">Contact Info</h3>
-                                <div class="div_sublist_1" id="sublist1_1">
-                                    <ul class="sublist_1_1">
-                                        <li>
-                                            Name of district resource conservation (RCM) or facilities manager: 
-                                            <input type="text" name="Manager Name" value=""/>
-                                        </li>
-                                        <li>
-                                            Contact information for district RCM or facilities manager:
-                                            <input type="text" name="Manager Contact" value=""/>
-                                        </li>
-                                        <li>
-                                            Name of person completing this guide:
-                                            <input type="text" name="Person" value=""/>
-                                        </li>
-                                        <li>
-                                            Title of person completing this guide:
-                                            <input type="text" name="Title" value="">
-                                        </li>
-                                        <li>
-                                            Comment:
-                                            <textarea></textarea>
-                                        </li>
-                                    </ul>
-                                    <div class="ui button aligned center teal" id="create_pdf">Create PDF</div>
-                                </div>
-                            </li>
-                            <li>
-                                <h3 id="progress_h1_h2" class="hdr_l1_l1">A: Form Your Team</h3>
-                                <div class="div_sublist_1" id="sublist1_2">
-                                    <ul class="sublist_1_2">
-                                        <li>Form a Green Schools team comprised of two or more staff members, any interested students or student group(s), and any parent volunteers. Include on the team at least two staff members such as teachers, principal, other administrators, and custodial staff.</li>
-                                        <li>List names and titles of staff members: </li>
-                                        <li>Name of person completing this guide: </li>
-                                        <li>Announce your school’s participation in the King County Green Schools Program, and invite students and staff to participate in a Green Team. Briefly note when and how you completed this action item: </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <h3 id="progress_h1_h3" class="hdr_l1_l1">B: Form Your Team</h3>
-                                <div class="div_sublist_1" id="sublist1_3">
-                                    <ul class="sublist_1_3">
-                                        <li>Form a Green Schools team comprised of two or more staff members, any interested students or student group(s), and any parent volunteers. Include on the team at least two staff members such as teachers, principal, other administrators, and custodial staff.</li>
-                                        <li>List names and titles of staff members: </li>
-                                        <li>Name of person completing this guide: </li>
-                                        <li>Announce your school’s participation in the King County Green Schools Program, and invite students and staff to participate in a Green Team. Briefly note when and how you completed this action item: </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
+                        {{> sublist_1}}
                     </div>
                 </li>
                 <li class="progress progress_2">
@@ -145,6 +94,8 @@
         </div>
     </div>
     <div id="div_footer"></div>
+    <script type="text/javascript" src="/static/js/plugins/jspdf.debug.js"></script>
+    <script type="text/javascript" src="/static/js/plugins/html2canvas.min.js"></script>
     <script src="/static/js/myscripts.js"></script>
 </body>
 </html>

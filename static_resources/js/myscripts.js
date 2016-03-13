@@ -91,9 +91,84 @@ $(document).ready(function(){
                     $("#sublist1_3").css('display','block');
                 }
                 break;
+            case "progress_h1_h4" :
+                if($("#sublist1_4").css('display') == 'block') {
+                    $(".div_sublist_1").css('display','none');
+                    $("#sublist1_4").css('display','none');
+                }
+                else {
+                    $(".div_sublist_1").css('display','none');
+                    $("#sublist1_4").css('display','block');
+                }
+                break;
+            case "progress_h1_h5" :
+                if($("#sublist1_5").css('display') == 'block') {
+                    $(".div_sublist_1").css('display','none');
+                    $("#sublist1_5").css('display','none');
+                }
+                else {
+                    $(".div_sublist_1").css('display','none');
+                    $("#sublist1_5").css('display','block');
+                }
+                break;
+            case "progress_h1_h6" :
+                if($("#sublist1_6").css('display') == 'block') {
+                    $(".div_sublist_1").css('display','none');
+                    $("#sublist1_6").css('display','none');
+                }
+                else {
+                    $(".div_sublist_1").css('display','none');
+                    $("#sublist1_6").css('display','block');
+                }
+                break;
+            case "progress_h1_h7" :
+                if($("#sublist1_7").css('display') == 'block') {
+                    $(".div_sublist_1").css('display','none');
+                    $("#sublist1_7").css('display','none');
+                }
+                else {
+                    $(".div_sublist_1").css('display','none');
+                    $("#sublist1_7").css('display','block');
+                }
+                break;
             default : 
                 $(".div_sublist_1").css('display','none');
         }
-
     });
+    
+ var 
+	form = $('.form'),
+	cache_width = form.width(),
+	a4  =[ 595.28,  841.89];  // for a4 size paper width and height
+
+$('#create_pdf_sublist_1_1').on('click',function(){
+	$('body').scrollTop(0);
+	createPDF();
+});
+//create pdf
+function createPDF(){
+    console.log("in createPDF");
+	getCanvas().then(function(canvas){
+		var 
+		img = canvas.toDataURL("image/png"),
+		doc = new jsPDF({
+          unit:'px', 
+          format:'a4'
+        });     
+        doc.addImage(img, 'JPEG', 20, 20);
+        doc.save('techumber-html-to-pdf.pdf');
+        form.width(cache_width);
+	});
+}
+
+// create canvas object
+function getCanvas(){
+    console.log("in getCanvas");
+	form.width((a4[0]*1.33333) -80).css('max-width','none');
+	return html2canvas(form,{
+    	imageTimeout:2000,
+    	removeContainer:true
+    });	
+}
+   
 });
