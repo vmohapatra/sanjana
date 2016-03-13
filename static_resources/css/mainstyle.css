@@ -25,8 +25,10 @@ h2 {
 }
 #header_logo {
     background-color: #008000; /*green*/
-    height: 30px;
-    width: 100%;
+    background-image: url("/static/images/logo.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    padding: 9%;
 }
 #header_welcome {
     padding: 5px;
@@ -66,15 +68,25 @@ h2 {
     width: 33%;
     padding: 1%;
 }
-
 .div_sublist {
     display: none;
-    background-color: #00FF00; /*lime*/
+    /*background-color: #00FF00; /*lime*/
     padding: 10px;
+}
+.sublist_1_li {
+    border: 1px solid;
 }
 .div_sublist_1 {
     display: none;
-    background-color: #FFC0CB; /*pink*/
+    /*background-color: #FFC0CB; /*pink*/
+    padding: 10px;
+}
+.create-pdf-button {
+    background-color: #00b5ad;
+    color: #fff;
+    text-shadow: none;
+    background-image: none;
+    width: 90px;
     padding: 10px;
 }
 #content_submit {
