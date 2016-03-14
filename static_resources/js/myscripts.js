@@ -6,7 +6,7 @@ $(document).ready(function(){
 
         switch(clickedElementId) {
             case "progress_h1":
-                //Do something hhh
+                //Do something
                 if($("#sublist1").css('display') == 'block') {
                     $(".div_sublist").css('display','none');
                     $("#sublist1").css('display','none');
