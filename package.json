@@ -26,8 +26,7 @@
         "hbs": "^4.0.0",
         "mongodb": "^2.0.49",
         "mongoose" : ">=3.6.0",
-        "request" : ">=2.33.0",
-        "cheerio" : ">=0.14.0"
+        "body-parser": "~1.0.1"
     },
     "devDependencies": {}
 }
