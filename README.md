@@ -2,8 +2,9 @@
 
 ## Prerequisites :
 
-* Nodejs : Install the latest version of nodejs from https://nodejs.org/en/
-* npm 
+* Nodejs : Install the latest version of nodejs from https://nodejs.org/
+* Mongodb : Install the latest version of mongodb from https://www.mongodb.org/
+* npm
 
 ## To add all the dependencies in the app:
 
@@ -25,3 +26,26 @@ NOTE: You have to enter a 5 digit number in place of [PORT_NUMBER]
 
 $ node app.js [PORT_NUMBER]
 ````
+
+
+
+
+More about the app :
+
+Our deliverable is a prototype web application, built on top of Node.js. Node is an event-driven framework for server-side JavaScript, based on Google’s V8 engine. It is open-source and under active development; in addition, it has enjoyed great popularity recently and there is thus no short- age of libraries and learning resources. More information can be found at http://nodejs.org/.
+
+We make use of MongoDB, a document database, to store persistent data, such as the attribute vectors for images and destinations. MongoDB is not related to SQL; it stores untyped ‘documents’ in ‘collections’ (compare SQL: typed ‘rows’ in ‘tables’). Despite being untyped, MongoDB is very high-performance, and because the document syntax is JSON, it’s easy to store and retrieve JavaScript objects. More information about MongoDB can be found at https://www.mongodb.org/.
+
+The client-side is implemented in jQuery. JQuery is a JavaScript library that embeds a functional domain-specific language for document traversal, manipulation, event-handling, AJAX, and more. More information here: http://jquery.com/.
+
+
+In addition to Node.js and MongoDB, the following Node.js libraries are required for operation. See the Installation section for instructions on how to install them.
+
+• Express(http://expressjs.com/):lightweightwebapplicationframe-
+work
+• Express Handlebars (https://github.com/ericf/express-handlebars): A specialised Handlebars view engine for Express
+• HBS (https://www.npmjs.com/package/hbs):Default view engine to be used in Express
+• Mongodb (https://www.npmjs.com/package/mongodb): The official MongoDB driver for Node.js. Provides a high-level API on top of mongodb-core that is meant for end users.
+• Mongoose(http://mongoosejs.com/):MongoDB interface with schema-based object modeling
+• Cheerio (https://github.com/MatthewMueller/cheerio): server-side jQuery implementation
+• Request(https://github.com/mikeal/request):simpleHTTPclient

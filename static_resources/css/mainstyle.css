@@ -25,7 +25,7 @@ h2 {
 }
 #header_logo {
     background-color: #008000; /*green*/
-    background-image: url("/static/images/logo.jpg");
+    background: url("/static/images/logo.jpg") ;
     background-repeat: no-repeat;
     background-size:cover;
     padding: 9%;
@@ -81,6 +81,11 @@ h2 {
     /*background-color: #FFC0CB; /*pink*/
     padding: 10px;
 }
+.sublist_1_1_li input {
+    margin-top: 10px;
+    padding: 5px;
+}
+
 .create-pdf-button {
     background-color: #00b5ad;
     color: #fff;
