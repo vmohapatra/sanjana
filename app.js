@@ -3,10 +3,17 @@ var path = require('path');
 var hbs = require('hbs');
 var MongoClient = require('mongodb').MongoClient;
 var expressHbs = require('express3-handlebars');
+var bodyParser = require('body-parser');
 
 var config = require('./config');
+var db = require('./db');
 
 var app = express();
+
+// configure app to use bodyParser()
+// this will let us get the data from a POST
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.use(express.static('static'));
 app.use('/static', express.static(__dirname + '/static_resources'));
@@ -36,6 +43,12 @@ app.listen(config.http_port, function () {
   console.log('Please access app at http://localhost:'+config.http_port);
   console.log(config.root);
   console.log("Variable __dirname : "+__dirname);
+});
+
+// POST method for the AJAX entry-point
+app.post('/saveUserData', function (req, res) {
+    console.log("in POST in db");
+    console.log("POSTBODY: " + JSON.stringify(req.body));
 });
 
 module.exports = app;

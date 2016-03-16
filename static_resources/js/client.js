@@ -148,6 +148,22 @@ $(document).ready(function(){
     //create pdf
     function createPDF(clickedBtnId){
         console.log("in createPDF");
+        console.log("Send an ajax POST request to store data in db");
+        $.ajax({
+            type: "POST",
+            url: "/saveUserData",
+            data: {
+                name: "Vijaya",
+                email: "vmohapatra@hotmail.com",
+                password: "mypassword"
+            }
+        })
+        .done(function(){})
+        .fail(function(){console.log('post fail');})
+        .always(function(resp){
+            console.log("in always POST client script");
+        });
+
         switch(clickedBtnId) {
             case "create_pdf_sublist_1_1" : 
                 formToPrint = $("#form_1_1");
@@ -171,13 +187,13 @@ $(document).ready(function(){
                 }
             };
             
-            doc = screenshotToPdf(doc, img);
+            //doc = screenshotToPdf(doc, img);
 
             //doc = htmlToPdf(doc, elementHandler);
 
             //doc = textToPdf(doc, $(formToPrint));
 
-            doc.save('Vijaya-KCGS.pdf');
+            //doc.save('Vijaya-KCGS.pdf');
             
             //Commenting this out as it resets the form width on the web page
             //form.width(cache_width);

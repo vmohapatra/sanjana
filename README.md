@@ -26,6 +26,7 @@ To start mongodb, open cmd.exe and navigate to bin directory under mongodb insta
 If you want to store databases in a different folder, type the following command. (I recommend this)
 type  mongod.exe --dbpath <path to the data folder>
 
+
 ## Steps to run the app on Node JS
 
 * Go to the root directory
