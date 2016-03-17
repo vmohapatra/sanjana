@@ -1,13 +1,12 @@
 var express = require('express');
 var path = require('path');
 var hbs = require('hbs');
-var MongoClient = require('mongodb').MongoClient;
 var expressHbs = require('express3-handlebars');
 var bodyParser = require('body-parser');
 
 var config = require('./config');
-var db = require('./db');
-var User = require('./models/user');
+var login = require('./login');
+var data = require('./data-interaction');
 
 var app = express();
 
@@ -45,38 +44,8 @@ app.get('/login', function (req, res) {
     res.render(app.get('views') + '/layouts/'+ 'login');
     var query = req.query;
 
-    //If no url param at time of login
-    if(!query["invalidCredentials"]) {
-        
-        User.findOne({email:"test@test.com"},function(err, user){
-            if(err) {
-                console.log("Error in retrieveing user data from db");
-                console.log(err);
-            }
-            
-            if(!user) {
-                console.log("Registered user not present.");
-                var registeredUser = new User();
-                registeredUser.name = "Test User";
-                registeredUser.email = "test@test.com";
-                registeredUser.password = "testpwd";
-                registeredUser.save(function(err, savedUser){
-                    if(err) {
-                        console.log("Error in saving the user");
-                        console.log(err);
-                        //return res.status(500).send();
-                    }
-                    
-                    console.log("successfully saved registered user");
-                    //return res.status(200).send();
-                });
-            }
-            else {
-                console.log("**Registered User exists**");
-                console.log(user);
-            }
-        });
-    }
+    //Insert registered user if not already present
+    login.insertRegisteredUser(query);
 });
 
 
@@ -95,16 +64,15 @@ app.listen(config.http_port, function () {
 
 // POST method for main
 app.post('/login', function (req, res) {
-    console.log("in POST in app");
-    console.log("POSTBODY: " + JSON.stringify(req.body));
-    if(req.body.email == "test@test.com" && req.body.password == "testpwd") {
-        console.log("Login credentials valid");
-        res.redirect('/main');
-    }
-    else {
-        console.log("Login credentials invalid");
-        res.redirect('/login?invalidCredentials=true');
-    }
+    //console.log("POSTBODY: " + JSON.stringify(req.body));
+    login.authenticateCredentials(req, function(err, redirectLink) {
+        if(redirectLink) {
+            res.redirect(redirectLink);
+        }
+        else {
+            console.log(err);
+        }
+    });
 });
 
 // POST method for the AJAX entry-point

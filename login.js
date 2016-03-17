@@ -1,0 +1,69 @@
+'use strict';
+
+var db = require('./db');
+
+//Contains the backend logic
+var login = {};
+
+login.insertRegisteredUser = function(query) {
+    console.log("In insert registered user. Adding registered user if not already present");
+    //First time login. No validation has happened yet
+    if(!query["invalidCredentials"]) {
+        
+        db.User.findOne({email:"test@test.com"},function(err, user){
+            if(err) {
+                console.log("Error in retrieving user data from db");
+                console.log(err);
+            }
+            
+            if(!user) {
+                console.log("Registered user not present.");
+                var registeredUser = new db.User();
+                registeredUser.name = "Test User";
+                registeredUser.email = "test@test.com";
+                registeredUser.password = "testpwd";
+                registeredUser.save(function(err, savedUser){
+                    if(err) {
+                        console.log("Error in saving the user");
+                        console.log(err);
+                        //return res.status(500).send();
+                    }
+                    
+                    console.log("successfully saved registered user");
+                    //return res.status(200).send();
+                });
+            }
+            else {
+                console.log("**Registered User exists**");
+                console.log(user);
+            }
+        });
+    }
+    else {
+        //If not a invalid credential submission 
+    }
+};
+
+login.authenticateCredentials = function(req, callback) {
+    console.log("In authenticate credentials at login.");
+    db.User.findOne({email:req.body.email, password:req.body.password}, function(err, user){
+        if(err) {
+            console.log("Error in retrieving user data from db.");
+            console.log(err);
+            callback(err,redirectLink);
+        }
+        
+        if(req.body.email == "test@test.com" && req.body.password == "testpwd") {
+            console.log("Login credentials valid");
+            //res.redirect('/main');
+            callback("Error in authenticating credentials.",'/main');
+        }
+        else {
+            console.log("Login credentials invalid");
+            //res.redirect('/login?invalidCredentials=true');
+            callback("Error in authenticating credentials.",'/login?invalidCredentials=true');
+        }
+    });
+};
+
+module.exports = login;
