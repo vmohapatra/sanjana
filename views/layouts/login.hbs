@@ -8,9 +8,17 @@
 </head>
 <body>
     <div id="div_header">
-        <div id="header_logo"></div>
     </div>
-    <div id="div_content">
+    <div id="div_content" class="login_content">
+        <div class="login">
+          <h1>Login to Web App</h1>
+          <form method="post" action="/login">
+              <p class="login_error">Invalid email / password combination. Please try again !</p>
+              <p class="login_input_container"><input type="text" name="email" value="" placeholder="User Email"></p>
+            <p class="login_input_container"><input type="password" name="password" value="" placeholder="Password"></p>
+            <p class="login_submit_container"><input type="submit" name="submit" value="login"></p>
+          </form>
+        </div>
     </div>
     <div id="div_footer"></div>
     <script type="text/javascript" src="/static/js/plugins/jspdf.debug.js"></script>
