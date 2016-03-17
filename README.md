@@ -24,7 +24,41 @@ https://docs.mongodb.org/manual/tutorial/install-mongodb-on-windows/
 To start mongodb, open cmd.exe and navigate to bin directory under mongodb installation directory and type mongod.exe (mongod on Mac) . This will start mongodb database daemon, databases will be stored in the data directory you have chosen as part of mongodb installation.
 
 If you want to store databases in a different folder, type the following command. (I recommend this)
-type  mongod.exe --dbpath <path to the data folder>
+type  :
+
+````
+mongod.exe --dbpath <path to the data folder>
+````
+
+Additional info to debug mongo :
+
+* To see what is on mongo db for the app:
+
+1) Open a new cmd window after starting mongo server in the above step, type
+
+````
+$ mongo
+````
+
+2) To see database being used
+````
+>show dbs
+````
+
+3) To go to database for the app
+````
+>use sanjana_db
+````
+
+4) To see tables aka collections in the db
+````
+> show collections
+````
+
+5) To show all records in a particular table or collection in the db
+````
+>db.[collection name].find().pretty()
+````
 
 
 ## Steps to run the app on Node JS
@@ -41,8 +75,6 @@ NOTE: You have to enter a 5 digit number in place of [PORT_NUMBER]
 
 $ node app.js [PORT_NUMBER]
 ````
-
-
 
 More about the app :
 

@@ -10,6 +10,7 @@ mongoose.connect(config.db_url);
 
 module.exports = {
     User: require('./models/user'),
+    Level1Contact: require('./models/user')
 };
 
 //User
