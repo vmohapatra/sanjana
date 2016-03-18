@@ -46,24 +46,44 @@ login.insertRegisteredUser = function(query) {
 
 login.authenticateCredentials = function(req, callback) {
     console.log("In authenticate credentials at login.");
-    db.User.findOne({email:req.body.email, password:req.body.password}, function(err, user){
-        if(err) {
-            console.log("Error in retrieving user data from db.");
-            console.log(err);
-            callback(err,redirectLink);
+    db.User.findOne(
+        {email:req.body.email, password:req.body.password}, 
+        function(err, user){
+            if(err) {
+                console.log("Error in retrieving user data from db.");
+                console.log(err);
+                callback(err,redirectLink);
+            }
+
+            if(user) {
+                console.log("User with login credentials found. Login credentials valid.");
+                //res.redirect('/main');
+                req.session.user = user;
+                callback("Valid credentials.",'/main');
+            }
+            else {
+                console.log("No User with matching credentials. Login credentials invalid.");
+                //res.redirect('/login?invalidCredentials=true');
+                callback("Error in authenticating credentials.",'/login?invalidCredentials=true');
+            }
         }
-        
-        if(req.body.email == "test@test.com" && req.body.password == "testpwd") {
-            console.log("Login credentials valid");
-            //res.redirect('/main');
-            callback("Error in authenticating credentials.",'/main');
+    );
+};
+
+login.getUserInfo = function(req, callback) {
+    console.log("in get User info");
+    db.User.findOne({email: req.session.user.email },function(err, user){
+        if(err) {
+            console.log(err);
+            callback(err);
         }
         else {
-            console.log("Login credentials invalid");
-            //res.redirect('/login?invalidCredentials=true');
-            callback("Error in authenticating credentials.",'/login?invalidCredentials=true');
+            var userInfo = {};
+            userInfo.name = user.name;
+            userInfo.email = user.email;
+            console.log(userInfo);
+            callback(err, userInfo);
         }
     });
 };
-
 module.exports = login;

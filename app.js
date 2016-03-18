@@ -3,17 +3,13 @@ var path = require('path');
 var hbs = require('hbs');
 var expressHbs = require('express3-handlebars');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var config = require('./config');
 var login = require('./login');
 var data = require('./data-interaction');
 
 var app = express();
-
-// configure app to use bodyParser()
-// this will let us get the data from a POST
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 
 app.use(express.static('static'));
 app.use('/static', express.static(__dirname + '/static_resources'));
@@ -24,10 +20,20 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('hbs', expressHbs({extname:'hbs'}));
 app.set('view engine', 'hbs');
 
-
 //Use register partials to get partial templates from the specific partials directory "partials"
 hbs.registerPartials(__dirname + '/views/partials');
 
+// configure app to use bodyParser()
+// this will let us get the data from a POST
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+//Use a session
+app.use(session({
+    secret: "qwerty987dfg878Q6sdfwe34dsfgh", 
+    resave: false, 
+    saveUninitialized: true
+}));
 
 app.get('/', function (req, res) {
     //Sets a string as a response to get '/'
@@ -50,8 +56,27 @@ app.get('/login', function (req, res) {
 
 
 app.get('/main', function (req, res) {
-    //Renders main.hbs from views/layouts folder
-    res.render(app.get('views') + '/layouts/'+ 'main');
+    if(req.session.user) {
+        //If logged in
+        console.log("Valid session. User logged in.");
+        login.getUserInfo(req, function(err, user){
+            if(user) {
+                //Renders main.hbs from views/layouts folder
+                res.render(
+                    app.get('views') + '/layouts/'+ 'main', 
+                    {userInfo : user}
+                );
+            }
+            else {
+                console.log(err);
+            }
+        });
+    }
+    else {
+        //if not logged in
+        console.log("Invalid session. User is not logged in");
+        res.redirect('/login');
+    }
 });
 
 app.listen(config.http_port, function () {

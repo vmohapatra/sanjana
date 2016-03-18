@@ -10,13 +10,40 @@ ul {
 h2 {
     color: #008000; /*green*/
 }
+input {
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 /**********************Generic Styles**********************/
 .clear {
     clear: both;
 }
-/**********************Progress Styles**********************/
+/**********************Generic Component Styles**********************/
 .progress {
     background-color: #FFFFFF; /*#FF6666;*/
+}
+.create-pdf-button {
+    background-color: #00b5ad;
+    color: #fff;
+    text-shadow: none;
+    background-image: none;
+    width: 90px;
+    padding: 10px;
+    margin: 5px;
+    display: inline-block;
+    text-align: center;
+}
+.save-form-button {
+    background-color: #00b5ad;
+    color: #fff;
+    text-shadow: none;
+    background-image: none;
+    width: 90px;
+    padding: 10px;
+    margin: 5px;
+    display: inline-block;
+    text-align: center;
 }
 /**********************Login Page Styles**********************/
 .login_content {
@@ -110,15 +137,6 @@ h2 {
     margin-top: 10px;
     padding: 5px;
 }
-
-.create-pdf-button {
-    background-color: #00b5ad;
-    color: #fff;
-    text-shadow: none;
-    background-image: none;
-    width: 90px;
-    padding: 10px;
-}
 #content_submit {
     text-align: center;
 }
@@ -128,6 +146,7 @@ h2 {
 .main_list li h3 {
     padding: 10px;
 }
+
 .hdr_l1_active {
     background-color: #339900; /*green*/
 }
