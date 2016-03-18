@@ -30,7 +30,7 @@ $(document).ready(function(){
             $(".login_error").css("display","block");
     }
 
-    //Specify click behavior on individual sections Level 1 : List 1
+    //Specify click behavior on individual sections Level 1 : List 1 headers
     $(".progress .hdr_l1").click(function(){
         var clickedElementId = $(this).attr('id');
 
@@ -85,7 +85,7 @@ $(document).ready(function(){
         }
     });
 
-    //Level 1 - Levels
+    //Specify click behavior on individual sections Level 1_1: level 1 headers
     $(".progress .hdr_l1_l1").click(function() {
         var clickedElementId = $(this).attr('id');
 

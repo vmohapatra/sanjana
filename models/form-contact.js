@@ -9,4 +9,4 @@ var level1_contact_schema = new mongoose.Schema({
     personTitle: { type: String }
 });
 
-module.exports = mongoose.model('Level1Contact', level1_contact_schema);
+module.exports = mongoose.model('Level1Contact', level1_contact_schema, 'level1ContactFormInfo');

@@ -10,7 +10,7 @@
     <div id="div_header">
         <div id="header_logo"></div>
         <div id="header_welcome">
-            <h2>Welcome Eastlake High School!</h2>
+            <h2>Welcome {{userInfo.name}} !</h2>
         </div>
         <div id="header_progress">
             <ul class="horizontal progress_bar">
@@ -37,12 +37,13 @@
                     <div class="div_sublist" id="sublist1">
                         <ul class="sublist_1">
                             <li>
-                                <form class="form">
+                                <form id="form_1_1" class="form">
                                     <h3 id="progress_h1_h1" class="hdr_l1_l1">Contact Info</h3>
                                     <div class="div_sublist_1" id="sublist1_1">
                                         <ul class="sublist_1_1">
                                             {{> sublist_1_1}}
                                         </ul>
+                                        <div class="save-form-button" id="save_pdform_sublist_1_1">Save</div>
                                         <div class="create-pdf-button" id="create_pdf_sublist_1_1">Create PDF</div>
                                     </div>
                                 </form>
@@ -53,6 +54,8 @@
                                     <ul class="sublist_1_2">
                                         {{> sublist_1_2}}
                                     </ul>
+                                    <div class="save-form-button" id="save_pdform_sublist_1_2">Save</div>
+                                    <div class="create-pdf-button" id="create_pdf_sublist_1_2">Create PDF</div>
                                 </div>
                             </li>
                             <li>
