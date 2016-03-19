@@ -46,15 +46,20 @@ app.get('/', function (req, res) {
 });
 
 app.get('/login', function (req, res) {
-    //Renders login.hbs from views/layouts folder
-    res.render(app.get('views') + '/layouts/'+ 'login');
     var query = req.query;
-
-    //Insert registered user if not already present
-    login.insertRegisteredUser(query);
+    //Insert registered user if not already present before rendering login page
+    login.insertRegisteredUser(query, function(err, user){
+        if(user) {
+            //Renders login.hbs from views/layouts folder
+            res.render(app.get('views') + '/layouts/'+ 'login');
+        }
+        else {
+            console.log(err);
+        }
+    });
 });
 
-
+//get main view
 app.get('/main', function (req, res) {
     if(req.session.user) {
         //If logged in
@@ -87,7 +92,7 @@ app.listen(config.http_port, function () {
 });
 
 
-// POST method for main
+// POST method for login
 app.post('/login', function (req, res) {
     //console.log("POSTBODY: " + JSON.stringify(req.body));
     login.authenticateCredentials(req, function(err, redirectLink) {
@@ -100,14 +105,49 @@ app.post('/login', function (req, res) {
     });
 });
 
+// POST method for logout
+app.post('/logout', function (req, res) {
+    console.log("received a request to log out of app.");
+    //console.log("POSTBODY: " + JSON.stringify(req.body));
+    req.session.destroy(function(err){
+        if(err) {
+            console.log("Error while destroying session");
+        }
+        else {
+            // req.session is now undefined
+            console.log("User successfully logged out of app.");
+            console.log("Any further refresh of views will redirect to login page");
+        }
+    });
+});
+
+
 // POST method to save form data to db
 app.post('/saveFormData', function (req, res) {
-    data.saveForm(req);
+    console.log("In POST saveFormData");
+    data.saveForm(req, function(err, form){
+        if(form) {
+            console.log("Saved data in form :");
+            console.log(form);
+        }
+        else {
+            console.log(err);
+        }
+    });
 });
 
 // GET method to fetch form data from db
 app.get('/fetchFormData', function(req, res) {
-    data.fetchForm(req);
+    data.fetchForm(req, function(err, form){
+        if(form) {
+            console.log("Fetched data from form :");
+            console.log(form);
+            res.send(form);
+        }
+        else {
+            console.log(err);
+        }
+    });
 });
 
 module.exports = app;

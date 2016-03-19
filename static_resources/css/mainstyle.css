@@ -45,6 +45,17 @@ input {
     display: inline-block;
     text-align: center;
 }
+.logout_button {
+    background-color: #00b5ad;
+    color: #fff;
+    text-shadow: none;
+    background-image: none;
+    width: 90px;
+    padding: 10px;
+    margin: 5px;
+    display: inline-block;
+    text-align: center;
+}
 /**********************Login Page Styles**********************/
 .login_content {
     text-align: center;
@@ -116,13 +127,13 @@ input {
 }
 #content_sidebar {
     float: right;
-    background-color: #FFA500; /*orange*/
+    /*background-color: #FFA500; orange*/
     width: 33%;
     padding: 1%;
 }
 .div_sublist {
     display: none;
-    /*background-color: #00FF00; /*lime*/
+    /*background-color: #00FF00; lime*/
     padding: 10px;
 }
 .sublist_1_li {
