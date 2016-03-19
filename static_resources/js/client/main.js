@@ -6,22 +6,6 @@ $(document).ready(function(){
         a4  =[ 595.28,  841.89], // for a4 size paper width and height
         formInteractedWith = undefined;
 
-    //Util function to get util params
-    function getParameterByName(name, url) {
-        if (!url) url = window.location.href;
-        // This is just to avoid case sensitiveness
-        url = url.toLowerCase(); 
-        // This is just to avoid case sensitiveness for query parameter name
-        name = name.replace(/[\[\]]/g, "\\$&").toLowerCase();
-        
-        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-            results = regex.exec(url);
-        
-        if (!results) { return null; }
-        if (!results[2]) { return ''; }
-        return decodeURIComponent( results[2].replace(/\+/g, " ") );
-    }
-
     //Util function to get the form ID for the resp pdf or save button click
     function getClickedForm(clickedBtnId) {
         switch(clickedBtnId) {
@@ -43,11 +27,9 @@ $(document).ready(function(){
 
     //Util function to post form data
     function postFormData(clickedBtnId) {
-        console.log(clickedBtnId);
         var selectedForm = getClickedForm(clickedBtnId);
-        console.log(selectedForm);
         var postData = {};
-        
+
         postData.form_id = $(selectedForm).attr('id');
 
         for (var i = 0; i < selectedForm.elements.length; i++) {
@@ -80,20 +62,12 @@ $(document).ready(function(){
             .done(function(){})
             .fail(function(e){console.log(e);console.log('post fail');})
             .always(function(resp){
-                console.log("in always POST client script");
+                console.log(resp);
             });
         }
         else {
             console.log("Nothing to save.");
         }
-    }
-
-    if(
-        getParameterByName("invalidCredentials") != null 
-        && getParameterByName("invalidCredentials")=="true") {
-            //Display the login error only if the 
-            //invalidCredentials param exists as a url param at login
-            $(".login_error").css("display","block");
     }
 
     //Specify click behavior on individual sections Level 1 : List 1 headers
@@ -103,45 +77,41 @@ $(document).ready(function(){
         switch(clickedElementId) {
             case "progress_h1":
                 //Do something
+                $(".div_sublist").css('display','none');
                 if($("#sublist1").css('display') == 'block') {
-                    $(".div_sublist").css('display','none');
                     $("#sublist1").css('display','none');
                 }
                 else {
-                    $(".div_sublist").css('display','none');
                     $("#sublist1").css('display','block');
                 }
                 break;
             case "progress_h2":
                 //Do something
+                $(".div_sublist").css('display','none');
                 if($("#sublist2").css('display') == 'block') {
-                    $(".div_sublist").css('display','none');
                     $("#sublist2").css('display','none');
                 }
                 else {
-                    $(".div_sublist").css('display','none');
                     $("#sublist2").css('display','block');
                 }
                 break;
             case "progress_h3":
                 //Do something
+                $(".div_sublist").css('display','none');
                 if($("#sublist3").css('display') == 'block') {
-                    $(".div_sublist").css('display','none');
                     $("#sublist3").css('display','none');
                 }
                 else {
-                    $(".div_sublist").css('display','none');
                     $("#sublist3").css('display','block');
                 }
                 break;
             case "progress_h4":
                 //Do something
+                $(".div_sublist").css('display','none');
                 if($("#sublist4").css('display') == 'block') {
-                    $(".div_sublist").css('display','none');
                     $("#sublist4").css('display','none');
                 }
                 else {
-                    $(".div_sublist").css('display','none');
                     $("#sublist4").css('display','block');
                 }
                 break;
@@ -157,73 +127,73 @@ $(document).ready(function(){
 
         switch(clickedElementId) {
             case "progress_h1_h1" : 
+                $(".div_sublist_1").css('display','none');
                 if($("#sublist1_1").css('display') == 'block') {
-                    $(".div_sublist_1").css('display','none');
                     $("#sublist1_1").css('display','none');
                 }
                 else {
-                    $(".div_sublist_1").css('display','none');
                     $("#sublist1_1").css('display','block');
+                    //Fetch form data
                 }
                 break;
             case "progress_h1_h2" : 
+                $(".div_sublist_1").css('display','none');
                 if($("#sublist1_2").css('display') == 'block') {
-                    $(".div_sublist_1").css('display','none');
                     $("#sublist1_2").css('display','none');
                 }
                 else {
-                    $(".div_sublist_1").css('display','none');
                     $("#sublist1_2").css('display','block');
+                    //Fetch form data
                 }
                 break;
             case "progress_h1_h3" :
+                $(".div_sublist_1").css('display','none');
                 if($("#sublist1_3").css('display') == 'block') {
-                    $(".div_sublist_1").css('display','none');
                     $("#sublist1_3").css('display','none');
                 }
                 else {
-                    $(".div_sublist_1").css('display','none');
                     $("#sublist1_3").css('display','block');
+                    //Fetch form data
                 }
                 break;
             case "progress_h1_h4" :
+                $(".div_sublist_1").css('display','none');
                 if($("#sublist1_4").css('display') == 'block') {
-                    $(".div_sublist_1").css('display','none');
                     $("#sublist1_4").css('display','none');
                 }
                 else {
-                    $(".div_sublist_1").css('display','none');
                     $("#sublist1_4").css('display','block');
+                    //Fetch form data
                 }
                 break;
             case "progress_h1_h5" :
+                $(".div_sublist_1").css('display','none');
                 if($("#sublist1_5").css('display') == 'block') {
-                    $(".div_sublist_1").css('display','none');
                     $("#sublist1_5").css('display','none');
                 }
                 else {
-                    $(".div_sublist_1").css('display','none');
                     $("#sublist1_5").css('display','block');
+                    //Fetch form data
                 }
                 break;
             case "progress_h1_h6" :
+                $(".div_sublist_1").css('display','none');
                 if($("#sublist1_6").css('display') == 'block') {
-                    $(".div_sublist_1").css('display','none');
                     $("#sublist1_6").css('display','none');
                 }
                 else {
-                    $(".div_sublist_1").css('display','none');
                     $("#sublist1_6").css('display','block');
+                    //Fetch form data
                 }
                 break;
             case "progress_h1_h7" :
+                $(".div_sublist_1").css('display','none');
                 if($("#sublist1_7").css('display') == 'block') {
-                    $(".div_sublist_1").css('display','none');
                     $("#sublist1_7").css('display','none');
                 }
                 else {
-                    $(".div_sublist_1").css('display','none');
                     $("#sublist1_7").css('display','block');
+                    //Fetch form data
                 }
                 break;
             default : 
@@ -243,7 +213,7 @@ $(document).ready(function(){
         $('body').scrollTop(0);
         createPDF($(this).attr('id'));
     });
-    
+
     //create pdf
     function createPDF(clickedBtnId){
         console.log("in createPDF");
@@ -322,7 +292,7 @@ $(document).ready(function(){
         return jsPdfDoc;
     }
 
-    // create canvas object
+    //create canvas object
     function getCanvas(){
         console.log("in getCanvas");
         form.width((a4[0]*1.33333) -80).css('max-width','none');
