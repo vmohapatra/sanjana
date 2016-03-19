@@ -6,8 +6,8 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 
 var config = require('./config');
-var login = require('./login');
-var data = require('./data-interaction');
+var login = require('./dbutils/login');
+var data = require('./dbutils/data-interaction');
 
 var app = express();
 
@@ -100,10 +100,14 @@ app.post('/login', function (req, res) {
     });
 });
 
-// POST method for the AJAX entry-point
-app.post('/saveUserData', function (req, res) {
-    console.log("in POST in db");
-    console.log("POSTBODY: " + JSON.stringify(req.body));
+// POST method to save form data to db
+app.post('/saveFormData', function (req, res) {
+    data.saveForm(req);
+});
+
+// GET method to fetch form data from db
+app.get('/fetchFormData', function(req, res) {
+    data.fetchForm(req);
 });
 
 module.exports = app;

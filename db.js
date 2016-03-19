@@ -17,7 +17,9 @@ mongoose.connect(config.db_url, function(err){
 
 module.exports = {
     User: require('./models/user'),
-    Level1Contact: require('./models/form-contact')
+    Level1Contact: require('./models/form-contact'),
+    Level1TeamFormation: require('./models/form-team-formation')
+
 };
 
 //User
