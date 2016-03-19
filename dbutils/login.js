@@ -5,7 +5,7 @@ var db = require('../db');
 //Contains the backend logic
 var login = {};
 
-login.insertRegisteredUser = function(query) {
+login.insertRegisteredUser = function(query, callback) {
     console.log("In insert registered user. Adding registered user if not already present");
     //First time login. No validation has happened yet
     if(!query["invalidCredentials"]) {
@@ -13,7 +13,7 @@ login.insertRegisteredUser = function(query) {
         db.User.findOne({email:"test@test.com"},function(err, user){
             if(err) {
                 console.log("Error in retrieving user data from db");
-                console.log(err);
+                callback(err);
             }
             
             if(!user) {
@@ -25,22 +25,22 @@ login.insertRegisteredUser = function(query) {
                 registeredUser.save(function(err, savedUser){
                     if(err) {
                         console.log("Error in saving the user");
-                        console.log(err);
+                        callback(err);
                         //return res.status(500).send();
                     }
                     
-                    console.log("successfully saved registered user");
+                    callback("successfully saved registered user", user);
                     //return res.status(200).send();
                 });
             }
             else {
                 console.log("**Registered User exists**");
-                console.log(user);
+                callback("Registered User exists", user);
             }
         });
     }
     else {
-        //If not a invalid credential submission 
+        //If not a invalid credential redirection for re submission 
     }
 };
 

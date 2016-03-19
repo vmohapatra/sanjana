@@ -23,14 +23,15 @@ function getFormSchema(formId) {
     return schema;
 }
 
-dataInteraction.saveForm = function(req) {
-    console.log("In save contact form.");
+dataInteraction.saveForm = function(req, callback) {
+    console.log("In save form.");
     var schema = getFormSchema(req.body.form_id);
 
+    console.log(schema.name);
     db[schema.name].findOne({form_id:req.body.form_id},function(err, form){
         if(err) {
             console.log("Error in retrieving form data from db");
-            console.log(err);
+            callback(err);
         }
 
         var formLength = Object.keys(req.body).length;
@@ -51,22 +52,35 @@ dataInteraction.saveForm = function(req) {
 
             console.log(form);
         }
-        
-        
+
         form.save(function(err, savedUser){
             if(err) {
                 console.log("Error in saving the form data");
-                console.log(err);
+                callback(err);
             }
 
-            console.log("successfully saved form data");
+            callback("successfully saved form data", form);
         });
-        
 
     });
 };
 
-dataInteraction.fetchForm = function(req) {
+dataInteraction.fetchForm = function(req, callback) {
+    console.log("In fetch form.");
+    var schema = getFormSchema(req.query.form_id);
+
+    console.log(schema.name);
+    db[schema.name].findOne({form_id:req.query.form_id}, function(err, form){
+        if(err) {
+            console.log("Error in retrieving form data from db");
+            callback(err);
+        }
+        else {
+            console.log("**Form info exists in db**");
+            callback(err, form);
+        }
+    });
+
 };
 
 module.exports = dataInteraction;
