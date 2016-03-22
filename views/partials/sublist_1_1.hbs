@@ -1,22 +1,23 @@
 <li>
     Name of district resource conservation (RCM) or facilities manager: <br/>
-    <input type="text" name="RCM Name" placeholder="Name" value=""/>
+    <input type="text" id="rcm_name" name="RCM Name" placeholder="Name" value=""/>
 </li>
 <li>
     Contact information for district RCM or facilities manager: <br/>
-    <input type="text" name="RCM Email" placeholder="E-mail" value=""/> <br/>
-    <input type="text" name="RCM Phone" placeholder="Phone Number" value=""/>
+    <input type="text" id="rcm_email" name="RCM Email" placeholder="E-mail" value=""/> <br/>
+    <input type="text" id="rcm_phone" name="RCM Phone" placeholder="Phone Number" value=""/>
 </li>
 <li>
     Name of person completing this guide:
-    <input type="text" name="Person" placeholder="Name" value=""/>
+    <input type="text" id="completing_person" name="Person" placeholder="Name" value=""/>
 </li>
 <li>
     Title of person completing this guide:<br/>
-        <input type="checkbox" name="Title" value="Teacher"/>Teacher<br/>
-        <input type="checkbox" name="Title" value="Principal"/>Principal<br/>
-        <input type="checkbox" name="Title" value="Custodian"/>Custodian<br/>
-        <input type="checkbox" name="Title" value="Student"/>Student<br/>
-        <input type="checkbox" name="Title" value="Parent"/>Parent<br/>
-        <input type="checkbox" name="Title" value="Other"/>Other: <input type="text" name="Title" placeholder="Title" value=""/><br/>
+        <input type="radio" name="completing_person_title" value="Teacher"/>Teacher<br/>
+        <input type="radio" name="completing_person_title" value="Principal"/>Principal<br/>
+        <input type="radio" name="completing_person_title" value="Custodian"/>Custodian<br/>
+        <input type="radio" name="completing_person_title" value="Student"/>Student<br/>
+        <input type="radio" name="completing_person_title" value="Parent"/>Parent<br/>
+        <input type="radio" name="completing_person_title" value="Other"/>Other: 
+        <input type="text" name="completing_person_title" placeholder="Title" value=""/><br/>
 </li>

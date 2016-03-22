@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<title>KCGS Login</title>
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/mainstyle.css">
+    <script src="/static/js/lib/jquery-1.12.0.min.js"></script>
+</head>
+<body>
+    <div id="div_header">
+    </div>
+    <div id="div_content" class="login_content">
+        <div class="login">
+          <h1>Login to Web App</h1>
+          <form method="post" action="/login">
+              <p class="login_error">Invalid email / password combination. Please try again !</p>
+              <p class="login_input_container"><input type="text" name="email" value="" placeholder="User Email"></p>
+            <p class="login_input_container"><input type="password" name="password" value="" placeholder="Password"></p>
+            <p class="login_submit_container"><input type="submit" name="submit" value="login"></p>
+          </form>
+        </div>
+    </div>
+    <div id="div_footer"></div>
+    <script type="text/javascript" src="/static/js/plugins/jspdf.debug.js"></script>
+    <script type="text/javascript" src="/static/js/plugins/html2canvas.min.js"></script>
+    <script src="/static/js/client/login.js"></script>
+</body>
+</html>

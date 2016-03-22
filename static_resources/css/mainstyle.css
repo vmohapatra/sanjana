@@ -10,13 +10,76 @@ ul {
 h2 {
     color: #008000; /*green*/
 }
+input {
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 /**********************Generic Styles**********************/
 .clear {
     clear: both;
 }
-/**********************Progress Styles**********************/
+/**********************Generic Component Styles**********************/
 .progress {
     background-color: #FFFFFF; /*#FF6666;*/
+}
+.create-pdf-button {
+    background-color: #00b5ad;
+    color: #fff;
+    text-shadow: none;
+    background-image: none;
+    width: 90px;
+    padding: 10px;
+    margin: 5px;
+    display: inline-block;
+    text-align: center;
+}
+.save-form-button {
+    background-color: #00b5ad;
+    color: #fff;
+    text-shadow: none;
+    background-image: none;
+    width: 90px;
+    padding: 10px;
+    margin: 5px;
+    display: inline-block;
+    text-align: center;
+}
+.logout_button {
+    background-color: #00b5ad;
+    color: #fff;
+    text-shadow: none;
+    background-image: none;
+    width: 90px;
+    padding: 10px;
+    margin: 5px;
+    display: inline-block;
+    text-align: center;
+}
+/**********************Login Page Styles**********************/
+.login_content {
+    text-align: center;
+}
+.login_error {
+    display: none;
+    color: red;
+}
+.login h1 {
+    margin-bottom: 5px;    
+}
+.login_input_container {
+    padding: 5px;
+}
+.login_submit_container {
+    padding: 5px;
+}
+.login_submit_container input {
+    background-color: #00b5ad;
+    color: #fff;
+    text-shadow: none;
+    background-image: none;
+    width: 90px;
+    padding: 2px;
 }
 /**********************Header Section Styles**********************/
 #div_header {
@@ -25,7 +88,7 @@ h2 {
 }
 #header_logo {
     background-color: #008000; /*green*/
-    background-image: url("/static/images/logo.jpg");
+    background: url("/static/images/logo.jpg") ;
     background-repeat: no-repeat;
     background-size:cover;
     padding: 9%;
@@ -64,13 +127,13 @@ h2 {
 }
 #content_sidebar {
     float: right;
-    background-color: #FFA500; /*orange*/
+    /*background-color: #FFA500; orange*/
     width: 33%;
     padding: 1%;
 }
 .div_sublist {
     display: none;
-    /*background-color: #00FF00; /*lime*/
+    /*background-color: #00FF00; lime*/
     padding: 10px;
 }
 .sublist_1_li {
@@ -81,13 +144,9 @@ h2 {
     /*background-color: #FFC0CB; /*pink*/
     padding: 10px;
 }
-.create-pdf-button {
-    background-color: #00b5ad;
-    color: #fff;
-    text-shadow: none;
-    background-image: none;
-    width: 90px;
-    padding: 10px;
+.sublist_1_1_li input {
+    margin-top: 10px;
+    padding: 5px;
 }
 #content_submit {
     text-align: center;
@@ -98,6 +157,7 @@ h2 {
 .main_list li h3 {
     padding: 10px;
 }
+
 .hdr_l1_active {
     background-color: #339900; /*green*/
 }
