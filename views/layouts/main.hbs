@@ -12,6 +12,9 @@
         <div id="header_welcome">
             <h2>Welcome {{userInfo.name}} !</h2>
         </div>
+        <div id="div_logout_container">
+            <div id="logout_button" class="logout_button">Log out</div>
+        </div>
         <div id="header_progress">
             <ul class="horizontal progress_bar">
                 <li class="progress progress_1">
@@ -33,7 +36,7 @@
         <div id="content_main">
             <ul class="main_list">
                 <li class="progress progress_1">
-                    <h3 id="progress_h1" class="hdr_l1 hdr_l1_active ">Level 1: Waste Reduction and Recycling</h3>
+                    <h3 id="progress_h1" class="hdr_l1 hdr_l1_active">Level 1: Waste Reduction and Recycling</h3>
                     <div class="div_sublist" id="sublist1">
                         <ul class="sublist_1">
                             <li>
@@ -67,6 +70,8 @@
                                         <ul class="sublist_1_3">
                                             {{> sublist_1_3}}
                                         </ul>
+                                        <div class="save-form-button" id="save_form_sublist_1_3">Save</div>
+                                        <div class="create-pdf-button" id="create_pdf_sublist_1_3">Create PDF</div>
                                     </div>
                                 </form>
                             </li>
@@ -77,6 +82,8 @@
                                         <ul class="sublist_1_4">
                                             {{> sublist_1_4}}
                                         </ul>
+                                        <div class="save-form-button" id="save_form_sublist_1_4">Save</div>
+                                        <div class="create-pdf-button" id="create_pdf_sublist_1_4">Create PDF</div>
                                     </div>
                                 </form>
                             </li>
@@ -87,6 +94,8 @@
                                         <ol type="1" class="sublist_1_5">
                                             {{> sublist_1_5}}
                                         </ol>
+                                        <div class="save-form-button" id="save_form_sublist_1_5">Save</div>
+                                        <div class="create-pdf-button" id="create_pdf_sublist_1_5">Create PDF</div>
                                     </div>
                                 </form>
                             </li>
@@ -97,6 +106,8 @@
                                         <ul class="sublist_1_6">
                                             {{> sublist_1_6}}
                                         </ul>
+                                        <div class="save-form-button" id="save_form_sublist_1_6">Save</div>
+                                        <div class="create-pdf-button" id="create_pdf_sublist_1_6">Create PDF</div>
                                     </div>
                                 </form>
                             </li>
@@ -107,6 +118,8 @@
                                         <ul class="sublist_1_7">
                                             {{> sublist_1_7}}
                                         </ul>
+                                        <div class="save-form-button" id="save_form_sublist_1_7">Save</div>
+                                        <div class="create-pdf-button" id="create_pdf_sublist_1_7">Create PDF</div>
                                     </div>
                                 </form>
                             </li>
@@ -114,7 +127,7 @@
                     </div>
                 </li>
                 <li class="progress progress_2">
-                    <h3 id="progress_h2" class="hdr_l1 hdr_l1_active">Level 2: Energy Conservation</h3>
+                    <h3 id="progress_h2" class="hdr_l1">Level 2: Energy Conservation</h3>
                     <div class="div_sublist" id="sublist2">
                         <ul class="sublist_2">
                             <li>Contact Info</li>
@@ -158,9 +171,6 @@
             </ul>
         </div>
         <div id="content_sidebar">
-            <div id="div_logout_container">
-                <div id="logout_button" class="logout_button">Log out</div>
-            </div>
             <div id="sidebar_calendar">
                 <iframe src="https://calendar.google.com/calendar/embed?height=300&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=jn8uhakaj6shuv7a1qo86jp66o%40group.calendar.google.com&amp;color=%231B887A&amp;ctz=America%2FLos_Angeles" style="border-width:0" width="100%" height="300" frameborder="0" scrolling="no"></iframe>
             </div>

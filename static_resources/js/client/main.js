@@ -17,8 +17,28 @@ $(document).ready(function(){
             case "create_pdf_sublist_1_2" : 
                 formInteractedWith = window.document.getElementById("form_1_2");
                 break;
+            case "save_form_sublist_1_3" :
+            case "create_pdf_sublist_1_3" : 
+                formInteractedWith = window.document.getElementById("form_1_3");
+                break;
+            case "save_form_sublist_1_4" :
+            case "create_pdf_sublist_1_4" : 
+                formInteractedWith = window.document.getElementById("form_1_4");
+                break;
+            case "save_form_sublist_1_5" :
+            case "create_pdf_sublist_1_5" : 
+                formInteractedWith = window.document.getElementById("form_1_5");
+                break;
+            case "save_form_sublist_1_6" :
+            case "create_pdf_sublist_1_6" : 
+                formInteractedWith = window.document.getElementById("form_1_6");
+                break;
+            case "save_form_sublist_1_7" :
+            case "create_pdf_sublist_1_7" : 
+                formInteractedWith = window.document.getElementById("form_1_7");
+                break;
             default: 
-                //Return the whole document s the form
+                //Return the whole document as the form
                 formInteractedWith = window.document.getElementsByTagName("body")[0];
         }
         
@@ -59,7 +79,7 @@ $(document).ready(function(){
                 url: "/saveFormData",
                 data: postData
             })
-            .done(function(){})
+            .done(function(d){console.log(d);})
             .fail(function(e){console.log(e);console.log('post fail');})
             .always(function(){
             });
@@ -74,6 +94,7 @@ $(document).ready(function(){
         console.log("In getFormData for "+ formId);
         var getData = {};
 
+        
         $.ajax({
             type: "GET",
             url: "/fetchFormData",
@@ -81,10 +102,10 @@ $(document).ready(function(){
         })
         .done(function(data){
             console.log("GET successful");
-            console.log(data);
+            //console.log(data);
             
             for(var key in data) {
-                console.log(key+" : "+data[key]);
+                //console.log(key+" : "+data[key]);
                 if( document.getElementById(key) ) {
                     var element = document.getElementById(key);
                     if(element.type == "checkbox") {
@@ -119,6 +140,7 @@ $(document).ready(function(){
         .fail(function(e){console.log(e);console.log('get fail');})
         .always(function(){
         });
+        
     }
 
     //Specify click behavior on individual sections Level 1 : List 1 headers
@@ -283,7 +305,7 @@ $(document).ready(function(){
             type: "POST",
             url: "/logout"
         })
-        .done(function(){ console.log("log out POST successful"); })
+        .done(function(d){ console.log("log out POST successful"); window.location.reload(); })
         .fail(function(e){console.log(e);console.log('post fail');})
         .always(function(){
         });

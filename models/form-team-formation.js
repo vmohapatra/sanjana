@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-// Create a Contact Form Schema
+// Create a Team Formation Form Schema
 var level1_team_formation_schema = new mongoose.Schema({
     form_id : String,
     team_formation_check : Boolean,
@@ -12,4 +12,4 @@ var level1_team_formation_schema = new mongoose.Schema({
     participation_announcement_note : { type: String }
 });
 
-module.exports = mongoose.model('Level1TeamFormation', level1_team_formation_schema, 'level1FormTeamFormInfo');
+module.exports = mongoose.model('Level1TeamFormation', level1_team_formation_schema, 'level1TeamFormationFormInfo');

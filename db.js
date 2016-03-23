@@ -18,15 +18,10 @@ mongoose.connect(config.db_url, function(err){
 module.exports = {
     User: require('./models/user'),
     Level1Contact: require('./models/form-contact'),
-    Level1TeamFormation: require('./models/form-team-formation')
-
+    Level1TeamFormation: require('./models/form-team-formation'),
+    Level1AssessMonitor: require('./models/form-assess-monitor'),
+    Level1EducationOutreach: require('./models/form-education-outreach'),
+    Level1WasteReduction: require('./models/form-waste-reduction'),
+    Level1Recycling: require('./models/form-recycling'),
+    Level1HazardousMaterialManagement: require('./models/form-hazardous-material-management')
 };
-
-//User
-//Form sublist1_1 Contact
-//Form sublist1_2 A
-//Form sublist1_3 B
-//Form sublist1_4 C
-//Form sublist1_5 D
-//Form sublist1_7 E
-//Form sublist1_8 F

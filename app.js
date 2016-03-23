@@ -74,6 +74,7 @@ app.get('/main', function (req, res) {
             }
             else {
                 console.log(err);
+                res.send(err);
             }
         });
     }
@@ -101,6 +102,7 @@ app.post('/login', function (req, res) {
         }
         else {
             console.log(err);
+            res.send(err);
         }
     });
 });
@@ -112,11 +114,13 @@ app.post('/logout', function (req, res) {
     req.session.destroy(function(err){
         if(err) {
             console.log("Error while destroying session");
+            res.send("Error while destroying session");
         }
         else {
             // req.session is now undefined
             console.log("User successfully logged out of app.");
             console.log("Any further refresh of views will redirect to login page");
+            res.send("SUCCESS");
         }
     });
 });
@@ -129,9 +133,11 @@ app.post('/saveFormData', function (req, res) {
         if(form) {
             console.log("Saved data in form :");
             console.log(form);
+            res.send("SUCCESS");
         }
         else {
             console.log(err);
+            res.send(err);
         }
     });
 });
@@ -146,6 +152,7 @@ app.get('/fetchFormData', function(req, res) {
         }
         else {
             console.log(err);
+            res.send(err);
         }
     });
 });
