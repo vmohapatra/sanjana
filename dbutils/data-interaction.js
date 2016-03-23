@@ -17,7 +17,27 @@ function getFormSchema(formId) {
             schema.instance = new db.Level1TeamFormation();
             schema.name = "Level1TeamFormation";
             break;
-        default :
+         case "form_1_3" :
+            schema.instance = new db.Level1AssessMonitor();
+            schema.name = "Level1AssessMonitor";
+            break;
+        case "form_1_4" :
+            schema.instance = new db.Level1EducationOutreach();
+            schema.name = "Level1EducationOutreach";
+            break;
+        case "form_1_5" :
+            schema.instance = new db.Level1WasteReduction();
+            schema.name = "Level1WasteReduction";
+            break;
+        case "form_1_6" :
+            schema.instance = new db.Level1Recycling();
+            schema.name = "Level1Recycling";
+            break;
+        case "form_1_7" :
+            schema.instance = new db.Level1HazardousMaterialManagement();
+            schema.name = "Level1HazardousMaterialManagement";
+            break;
+       default :
     }
     
     return schema;
@@ -28,6 +48,7 @@ dataInteraction.saveForm = function(req, callback) {
     var schema = getFormSchema(req.body.form_id);
 
     console.log(schema.name);
+    
     db[schema.name].findOne({form_id:req.body.form_id},function(err, form){
         if(err) {
             console.log("Error in retrieving form data from db");
@@ -63,6 +84,7 @@ dataInteraction.saveForm = function(req, callback) {
         });
 
     });
+    
 };
 
 dataInteraction.fetchForm = function(req, callback) {

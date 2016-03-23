@@ -1,36 +1,58 @@
 <li>
-    <input type="checkbox" name="L1_E_1" value="Recyling_Classroom"/>Place a recycling container in every classroom. <br/>
-        <textarea></textarea><br/>
-    <input type="checkbox" name="L1_E_2" value="Recyling_Office"/>Place a recycling container in each office and next to each photocopy machine. <br/>
-        <textarea></textarea><br/>
-    <input type="checkbox" name="L1_E_3" value="Recyling_Container"/>Place a recycling container(s) in one or both of the following areas. <br/>
-        <div>
-            <ul>
-                <li><input type="checkbox" name="L1_E_3_1" value="Kitchen"/>In the kitchen for steel cans, plastic jugs and other recyclable materials.<br/>
-                    <input type="checkbox" name="L1_E_3_2" value="Staff_Lounge"/>In the staff lounge or staff break-room for paper, plastic bottles, aluminum cans, and other recyclable materials.<br/>
-                </li>
-            </ul>
-        </div>
-        <textarea></textarea><br/>
-    <input type="checkbox" name="L1_E_4" value="Container_Visible"/>Make sure that recycling containers are easily visible and, whenever possible, are located next to trash containers. <br/>
-        <textarea></textarea><br/>
-    <input type="checkbox" name="L1_E_5" value="Recyling_Sign"/>On each recycling container, place a recycling sign listing what can and can’t be recycled. <br/>
-        <textarea></textarea><br/>
-    <input type="checkbox" name="L1_E_6" value="Collect_Recycling"/>At a minimum, collect the following materials for recycling:<br/>
-        <div>
-            <ul>
-                <li><input type="checkbox" name="L1_E_6_1" value="Paper"/>Paper<br/>
-                    <input type="checkbox" name="L1_E_6_2" value="Cardboard"/>Cardboard<br/>
-                    <input type="checkbox" name="L1_E_6_3" value="Aluminum_Cans"/>Aluminum Cans<br/>
-                    <input type="checkbox" name="L1_E_6_4" value="Bottles"/>Plastic Bottles<br/>
-                    <input type="checkbox" name="L1_E_6_5" value="Light_Bulbs"/>Fluorescent light bulbs and tubes (required by law)<br/>
-                    <input type="checkbox" name="L1_E_6_6" value="Electronic_Waste"/>Electronic waste (required by law)<br/>
-                </li>
-            </ul>
-        </div>
-        <textarea></textarea><br/>
-    <input type="checkbox" name="L1_E_7" value="Recyling_Contaminants"/>Keep contaminants in the school’s recycling containers to five percent or less. Contaminants include straws, bottle caps, and other items that should not be placed in recycling containers. <br/>
-    <input type="checkbox" name="L1_E_8" value="Recyling_Container"/>Regularly empty all indoor recycling containers so that they do not overflow. List who empties the recycling containers at your school: <br/>
-        <textarea></textarea><br/>
-    <input type="checkbox" name="L1_E_9" value="Recyling_Percent"/>Reach a recycling rate of 40 percent (or more) OR improve the school’s recycling rate by 15 percentage points or more.  Our school’s recycling rate is <input type="text" name="L1_E_9_1" placeholder="Percent" value="" size="5"/> percent.<br/>
+    <input id="recycling_classroom_check" type="checkbox" name="L1_E_1" value="Recyling_Classroom"/>
+    Place a recycling container in every classroom. <br/>
+    <textarea id="recycling_classroom_note"></textarea><br/>
+    
+    <input id="recycling_office_check" type="checkbox" name="L1_E_2" value="Recyling_Office"/>
+    Place a recycling container in each office and next to each photocopy machine. <br/>
+    <textarea id="recycling_office_note"></textarea><br/>
+    
+    <input id="recycling_container_check" type="checkbox" name="L1_E_3" value="Recyling_Container"/>
+    Place a recycling container(s) in one or both of the following areas. <br/>
+    <div>
+        <ul>
+            <li>
+                <input id="recycling_container_kitchen_check" type="checkbox" name="L1_E_3_1" value="Kitchen"/>
+                In the kitchen for steel cans, plastic jugs and other recyclable materials.<br/>
+                <input id="recycling_container_stafflounge_check" type="checkbox" name="L1_E_3_2" value="Staff_Lounge"/>
+                In the staff lounge or staff break-room for paper, plastic bottles, aluminum cans, and other recyclable materials.<br/>
+            </li>
+        </ul>
+    </div>
+    <textarea id="recycling_container_note"></textarea><br/>
+    
+    <input id="container_visible_check" type="checkbox" name="L1_E_4" value="Container_Visible"/>
+    Make sure that recycling containers are easily visible and, whenever possible, are located next to trash containers. <br/>
+    <textarea id="container_visible_note"></textarea><br/>
+    
+    <input id="recycling_sign_check" type="checkbox" name="L1_E_5" value="Recyling_Sign"/>
+    On each recycling container, place a recycling sign listing what can and can’t be recycled. <br/>
+    <textarea id="recycling_sign_note"></textarea><br/>
+    
+    <input id="collect_recycling_check" type="checkbox" name="L1_E_6" value="Collect_Recycling"/>
+    At a minimum, collect the following materials for recycling:<br/>
+    <div>
+        <ul>
+            <li>
+                <input id="collect_recycling_paper_check" type="checkbox" name="L1_E_6_1" value="Paper"/>Paper<br/>
+                <input id="collect_recycling_cardboard_check" type="checkbox" name="L1_E_6_2" value="Cardboard"/>Cardboard<br/>
+                <input id="collect_recycling_alumcans_check" type="checkbox" name="L1_E_6_3" value="Aluminum_Cans"/>Aluminum Cans<br/>
+                <input id="collect_recycling_plasticbottle_check" type="checkbox" name="L1_E_6_4" value="Bottles"/>Plastic Bottles<br/>
+                <input id="collect_recycling_lightbulb_check" type="checkbox" name="L1_E_6_5" value="Light_Bulbs"/>Fluorescent light bulbs and tubes (required by law)<br/>
+                <input id="collect_recycling_electwaste_check" type="checkbox" name="L1_E_6_6" value="Electronic_Waste"/>Electronic waste (required by law)<br/>
+            </li>
+        </ul>
+    </div>
+    <textarea id="collect_recycling_note"></textarea><br/>
+    
+    <input id="recycling_contaminants_check" type="checkbox" name="L1_E_7" value="Recyling_Contaminants"/>
+    Keep contaminants in the school’s recycling containers to five percent or less. Contaminants include straws, bottle caps, and other items that should not be placed in recycling containers.<br/>
+    
+    <input id="recycling_container_empty_check" type="checkbox" name="L1_E_8" value="Recyling_Container"/>
+    Regularly empty all indoor recycling containers so that they do not overflow. List who empties the recycling containers at your school:<br/>
+    <textarea id="recycling_container_empty_note"></textarea><br/>
+    
+    <input id="recycling_percent_check" type="checkbox" name="L1_E_9" value="Recyling_Percent"/>
+    Reach a recycling rate of 40 percent (or more) OR improve the school’s recycling rate by 15 percentage points or more.  Our school’s recycling rate is 
+    <input id="recycling_percent_note" type="text" name="L1_E_9_1" placeholder="Percent" value="" size="5"/> percent.<br/>
 </li>

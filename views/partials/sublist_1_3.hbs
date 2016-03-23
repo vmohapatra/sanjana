@@ -1,11 +1,18 @@
 <li>
-    <input type="checkbox" name="L1_B_1" value="Guide_Complete"/>Use this guide to assess your school’s waste reduction and recycling (WRR) practices and to decide which items in your school’s garbage can be reduced, reused, and recycled. King County can assist with this activity.</li>
-<li>
-    <input type="checkbox" name="L1_B_2" value="Recycling_Rate"/>Calculate your school’s recycling rate at least twice during each school year. Use the recycling rate worksheet. Your King County Green Schools Program representative can help your school to calculate its recycling rate.<br/>
-    Date: <input type="text" name="begin_date" placeholder="Date" value=""/>  Beginning Recycling Rate: <input type="text" name="begin_rate" placeholder="Rate" value=""/><br/>
-    Date: <input type="text" name="end_date" placeholder="Date" value=""/>  Ending Recycling Rate: <input type="text" name="end_rate" placeholder="Rate" value=""/>
+    <input type="checkbox" id="guide_complete_check" name="L1_B_1" value="Guide_Complete"/>
+        Use this guide to assess your school’s waste reduction and recycling (WRR) practices and to decide which items in your school’s garbage can be reduced, reused, and recycled. King County can assist with this activity.<br/>
+    <textarea id="guide_complete_note"></textarea>
 </li>
 <li>
-    <input type="checkbox" name="L1_B_3" value="Optional_Service_Change"/>OPTIONAL: As garbage and recycling volumes change, adjust your collection service (i.e., less or more frequent collection, larger or smaller outdoor containers). Public schools typically ask school district staff to make these adjustments with the district’s contracted hauler. Note any collection changes service changes: <br/>
-    <textarea></textarea>
+    <input type="checkbox" id="calculate_school_recycling_rate_check" name="L1_B_2" value="Recycling_Rate"/>
+        Calculate your school’s recycling rate at least twice during each school year. Use the recycling rate worksheet. Your King County Green Schools Program representative can help your school to calculate its recycling rate.<br/>
+        Date: <input id="recycling_begin_date" type="text" name="begin_date" placeholder="mm/dd/yyyy" value=""/><br/>  
+        Beginning Recycling Rate: <input id="recycling_begin_rate" type="text" name="begin_rate" placeholder="Rate" value=""/> %<br/>
+        Date: <input id="recycling_end_date" type="text" name="end_date" placeholder="mm/dd/yyyy" value=""/>  <br/>
+        Ending Recycling Rate: <input id="recycling_end_rate" type="text" name="end_rate" placeholder="Rate" value=""/> %
+</li>
+<li>
+    <input type="checkbox" id="optional_service_change_check" name="L1_B_3" value="Optional_Service_Change"/>
+        OPTIONAL: As garbage and recycling volumes change, adjust your collection service (i.e., less or more frequent collection, larger or smaller outdoor containers). Public schools typically ask school district staff to make these adjustments with the district’s contracted hauler. Note any collection changes service changes: <br/>
+    <textarea id="optional_service_change_note"></textarea>
 </li>
