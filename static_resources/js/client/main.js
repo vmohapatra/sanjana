@@ -6,6 +6,10 @@ $(document).ready(function(){
         a4  =[ 595.28,  841.89], // for a4 size paper width and height
         formInteractedWith = undefined;
 
+    /*******************************************************
+        Utility functions
+    *******************************************************/
+    
     //Util function to get the form ID for the resp pdf or save button click
     function getClickedForm(clickedBtnId) {
         switch(clickedBtnId) {
@@ -91,7 +95,7 @@ $(document).ready(function(){
 
     //Util function to get form data
     function getFormData(formId) {
-        console.log("In getFormData for "+ formId);
+        //console.log("In getFormData for "+ formId);
         var getData = {};
 
         
@@ -116,10 +120,12 @@ $(document).ready(function(){
                     }
                 }
                 else if(document.getElementsByName(key)) {
+                    //console.log(key+" : "+data[key]);
                     var elements = document.getElementsByName(key);
                     for(var i = 0; i < elements.length; i++) {
                         if(elements[i].value == data[key]) {
                             elements[i].checked = true;
+                            break;
                         }
                         else {
                             //It belongs to Other option in radio button
@@ -130,6 +136,7 @@ $(document).ready(function(){
                             {
                                 elements[i].checked = true;
                                 elements[i+1].value = data[key];
+                                break;
                             }
                         }
 
@@ -143,8 +150,173 @@ $(document).ready(function(){
         
     }
 
+    //Util function to create pdf
+    function createPDF(clickedBtnId){
+        console.log("in createPDF");
+
+        formInteractedWith = getClickedForm(clickedBtnId);
+        
+        getCanvas().then(function(canvas){
+            var 
+            img = canvas.toDataURL("image/png"),
+            doc = new jsPDF({
+              unit:'px', 
+              format:'a4'
+            });
+
+            //Element handler only works for id
+            var elementHandler = {
+                '#create_pdf_sublist_1_1': function (element, renderer) {
+                    return true;
+                }
+            };
+            
+            //screenshotToPdf dpes not have good resolution and prints the save and create pdf buttons
+            //doc = screenshotToPdf(doc, img);
+
+            //htmltoPdf does not print input fields
+            //doc = htmlToPdf(doc, elementHandler);
+
+            doc = textToPdf(doc, $(formInteractedWith));
+
+            doc.save($(formInteractedWith).attr('id')+'.pdf');
+        });
+    }
+
+    //Util function to write a form to a pdf
+    function textToPdf(jsPdfDoc, form) {
+        console.log(form);
+        
+        //$(form).attr('id')
+        var formToConvertId = $(form).attr('id');
+        switch(formToConvertId) {
+            case "form_1_1": jsPdfDoc = textToPdfForm(jsPdfDoc, "form_1_1", "Contact Form");break;
+            case "form_1_2": jsPdfDoc = textToPdfForm(jsPdfDoc, "form_1_2", "Team Formation Form");break;
+            case "form_1_3": jsPdfDoc = textToPdfForm(jsPdfDoc, "form_1_3", "Assess and Monitor Form");break;
+            case "form_1_4": jsPdfDoc = textToPdfForm(jsPdfDoc, "form_1_4", "Education and Outreach Form");break;
+            case "form_1_5": jsPdfDoc = textToPdfForm(jsPdfDoc, "form_1_5", "Waste reduction Form");break;
+            case "form_1_6": jsPdfDoc = textToPdfForm(jsPdfDoc, "form_1_6", "Recycling Form");break;
+            case "form_1_7": jsPdfDoc = textToPdfForm(jsPdfDoc, "form_1_7", "Hazardous Materials Management Form");break;
+        }
+        
+        return jsPdfDoc;
+    }
+
+    //Util function to write a form to a pdf
+    function screenshotToPdf(jsPdfDoc, img) {
+        //Takes a screenshot of the form and converts to pdf
+        jsPdfDoc.addImage(img, 'PNG', 20, 20);
+        return jsPdfDoc;
+    }
+
+    //Util function to write a form to a pdf
+    function htmlToPdf(jsPdfDoc, elementHandler) {
+        //converts the html to pdf 
+        //Limitation : does not save input field values
+        var source = 
+            window.document.getElementById($(formInteractedWith).attr('id')) || 
+            window.document.getElementsByTagName("body")[0];
+
+        jsPdfDoc.fromHTML(
+            source,
+            15,
+            15,
+            {
+              'width': 180,'elementHandlers': elementHandler
+            }
+        );
+
+        return jsPdfDoc;
+    }
+
+    //Util function to create canvas object
+    function getCanvas(){
+        console.log("in getCanvas");
+        form.width((a4[0]*1.33333) -80).css('max-width','none');
+        return html2canvas(form,{
+            imageTimeout:2000,
+            removeContainer:true
+        });
+    }
+
+    //Util function for textToPdf for form_1_1
+    function textToPdfForm ( doc, formId, formTitle ) {
+        console.log("Writing "+formId+" contents to pdf");
+        
+        doc.setFont("helvetica");
+        
+        doc.setFontSize(22);
+        
+        //text(POSITION X, POSITION Y, Text)
+        doc.text(20, 20, formTitle);
+        var xPosition = 30;
+        var yPosition = 30;
+        //doc.text(20, 35, "Input");
+
+        doc.setFontSize(12);
+        
+        var elem = document.getElementById(formId).elements;
+        var radioGrpItem = 0;
+        var radioGrpName = '';
+
+        for(var i = 0; i < elem.length; i++)
+        {
+            yPosition = yPosition + 30;
+
+            var parentText = $(elem[i]).parent()[0].innerText;
+            var valueText = elem[i].value;
+                        
+            if( elem[i].type == "radio" ) {
+                
+                if(radioGrpItem == 0) {
+                    radioGrpName = elem[i].name;
+                    radioGrpItem = 1;
+                }
+                else if(elem[i].name == radioGrpName) {
+                    radioGrpItem++;
+                }
+                
+                if(elem[i].checked == true) {
+                    //console.log(parentText);
+                    //console.log(valueText);
+                    doc.text(xPosition, yPosition, parentText);
+                    console.log(doc.getTextDimensions(parentText));
+                    yPosition = yPosition + ((radioGrpItem+1) * 20);
+                    doc.text(xPosition, yPosition, valueText);
+                    console.log(doc.getTextDimensions(valueText));
+                }
+                else {
+                    yPosition = yPosition - 30;
+                }
+            }
+            else if( elem[i].id ){
+                //console.log(parentText);
+               // console.log(valueText);
+                if(elem[i].type == "checkbox") {
+                    doc.text(xPosition, yPosition, parentText);
+                    doc.text(xPosition, yPosition, parentText);
+                    yPosition = yPosition + 20;
+                }
+                else {
+                    doc.text(xPosition, yPosition, parentText);
+                    doc.text(xPosition, yPosition, parentText);
+                    yPosition = yPosition + 20;
+                    doc.text(xPosition, yPosition, valueText);
+                    console.log(doc.getTextDimensions(valueText));
+                }
+            }
+        }
+        //doc.text(30, 40, "Name of district resource conservation (RCM) or facilities manager: " + );
+
+        return doc;           
+    }
+    
+    /*******************************************************
+        Event Handlers
+    *******************************************************/
+
     //Specify click behavior on individual sections Level 1 : List 1 headers
-    $(".progress .hdr_l1").click(function(){
+    $(".hdr_l1").click(function(){
         var clickedElementId = $(this).attr('id');
 
         switch(clickedElementId) {
@@ -198,8 +370,30 @@ $(document).ready(function(){
         }
     });
 
+    //Specify click behavior on navigation buttons 
+    $(".progress ").click(function(){
+        console.log($(this).attr('class'));
+        var clickedNavClass = $(this).attr('class');
+        switch(clickedNavClass) {
+            case "progress progress_1" :
+                $("#progress_h1").click();
+                break;
+            case "progress progress_2" :
+                $("#progress_h2").click();
+                break;
+            case "progress progress_3" :
+                $("#progress_h1").click();
+                break;
+            case "progress progress_4" :
+                $("#progress_h1").click();
+                break;
+            default :
+                //Do nothing;
+        }
+    });
+    
     //Specify click behavior on individual sections Level 1_1: level 1 headers
-    $(".progress .hdr_l1_l1").click(function() {
+    $(".hdr_l1_l1").click(function() {
         var clickedElementId = $(this).attr('id');
 
         switch(clickedElementId) {
@@ -312,97 +506,9 @@ $(document).ready(function(){
     });
 
     //Implement create a pdf for form 1 of sublist 1
-    $('#create_pdf_sublist_1_1').on('click',function(){
+    $('.create-pdf-button').on('click',function(){
         $('body').scrollTop(0);
         createPDF($(this).attr('id'));
     });
-
-    //create pdf
-    function createPDF(clickedBtnId){
-        console.log("in createPDF");
-
-        formInteractedWith = getClickedForm(clickedBtnId);
-        
-        getCanvas().then(function(canvas){
-            var 
-            img = canvas.toDataURL("image/png"),
-            doc = new jsPDF({
-              unit:'px', 
-              format:'a4'
-            });
-
-            var elementHandler = {
-                '#create_pdf_sublist_1_1': function (element, renderer) {
-                    return true;
-                }
-            };
-            
-            //doc = screenshotToPdf(doc, img);
-
-            //doc = htmlToPdf(doc, elementHandler);
-
-            //doc = textToPdf(doc, $(formInteractedWith));
-
-            //doc.save('Vijaya-KCGS.pdf');
-        });
-    }
-
-    //Util function to write a form to a pdf
-    function textToPdf(jsPdfDoc, form) {
-        console.log(form);
-        //text(POSITION X, POSITION Y, Text)
-        jsPdfDoc.text(20, 20, "Contact Info");
-        jsPdfDoc.text(20, 35, "Input");
-        
-        var str = '';
-        var elem = document.getElementById($(form).attr('id')).elements;
-        for(var i = 0; i < elem.length; i++)
-        {
-            str ='';
-            str += "Type: " + elem[i].type + " ";
-            str += "Name:" + elem[i].name + " ";
-            str += " Value: " + elem[i].value + " ";
-            console.log(str);
-        } 
-
-        return jsPdfDoc;
-    }
-
-    //Util function to write a form to a pdf
-    function screenshotToPdf(jsPdfDoc, img) {
-        //Takes a screenshot of the form and converts to pdf
-        jsPdfDoc.addImage(img, 'PNG', 20, 20);
-        return jsPdfDoc;
-    }
-
-    //Util function to write a form to a pdf
-    function htmlToPdf(jsPdfDoc, elementHandler) {
-        //converts the html to pdf 
-        //Limitation : does not save input field values
-        var source = 
-            window.document.getElementById($(formToPrint).attr('id')) || 
-            window.document.getElementsByTagName("body")[0];
-
-        jsPdfDoc.fromHTML(
-            source,
-            15,
-            15,
-            {
-              'width': 180,'elementHandlers': elementHandler
-            }
-        );
-
-        return jsPdfDoc;
-    }
-
-    //create canvas object
-    function getCanvas(){
-        console.log("in getCanvas");
-        form.width((a4[0]*1.33333) -80).css('max-width','none');
-        return html2canvas(form,{
-            imageTimeout:2000,
-            removeContainer:true
-        });
-    }
 
 });

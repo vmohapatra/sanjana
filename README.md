@@ -93,3 +93,5 @@ work
 * HBS (https://www.npmjs.com/package/hbs):Default view engine to be used in Express
 * Mongodb (https://www.npmjs.com/package/mongodb): The official MongoDB driver for Node.js. Provides a high-level API on top of mongodb-core that is meant for end users.
 * Mongoose(http://mongoosejs.com/):MongoDB interface with schema-based object modeling
+* Body-Parser
+* Express-Session
