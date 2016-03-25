@@ -17,6 +17,9 @@ input {
     margin-top: 5px;
     margin-bottom: 5px;
 }
+textarea {
+    vertical-align: top;
+}
 /**********************Generic Styles**********************/
 .clear {
     clear: both;
@@ -32,7 +35,7 @@ input {
     color: #fff;
     text-shadow: none;
     background-image: none;
-    width: 90px;
+    min-width: 90px;
     padding: 10px;
     margin: 5px;
     display: inline-block;
@@ -43,7 +46,7 @@ input {
     color: #fff;
     text-shadow: none;
     background-image: none;
-    width: 90px;
+    min-width: 90px;
     padding: 10px;
     margin: 5px;
     display: inline-block;
@@ -54,7 +57,7 @@ input {
     color: #fff;
     text-shadow: none;
     background-image: none;
-    width: 90px;
+    min-width: 90px;
     padding: 10px;
     margin: 5px 0 5px 5px;
     display: inline-block;

@@ -65,6 +65,7 @@ app.get('/main', function (req, res) {
         //If logged in
         console.log("Valid session. User logged in.");
         login.getUserInfo(req, function(err, user){
+            //TODO : Differentiate between different users and accordingly redirect them to different views
             if(user) {
                 //Renders main.hbs from views/layouts folder
                 res.render(
