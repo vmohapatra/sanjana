@@ -99,14 +99,13 @@ $(document).ready(function(){
         //console.log("In getFormData for "+ formId);
         var getData = {};
 
-        
         $.ajax({
             type: "GET",
             url: "/fetchFormData",
             data: { "form_id" : formId}
         })
         .done(function(data){
-            console.log("GET successful");
+            console.log("GET successful for "+formId);
             //console.log(data);
             
             for(var key in data) {
@@ -153,9 +152,6 @@ $(document).ready(function(){
 
     //Util function to create pdf
     function createPDF(clickedBtnId){
-        console.log("in createPDF");
-        console.log(clickedBtnId);
-
         formInteractedWith = getClickedForm(clickedBtnId);
         
         //If clicked button corresponds to a form
@@ -193,8 +189,6 @@ $(document).ready(function(){
 
     //Util function to write a form to a pdf
     function textToPdf(jsPdfDoc, form) {
-        console.log(form);
-        
         //$(form).attr('id')
         var formToConvertId = $(form).attr('id');
         switch(formToConvertId) {
@@ -335,6 +329,13 @@ $(document).ready(function(){
                       verticalOffset = margin; // Restart height position
                     }                    
                     
+                    if(elem[i].checked) {
+                        doc.setDrawColor(51, 153, 0);
+                    }
+                    else {
+                        doc.setDrawColor(0, 0, 0);
+                    }
+                    doc.rect(0.30,( verticalOffset + fontSize / 72 ) - 0.025, 0.002, 0.002); // empty square
                     doc.setTextColor(0,0,0);
                     lines = doc.setFont(fontName)
                                 .setFontSize(fontSize)
