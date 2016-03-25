@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 // Create a Assess and Monitor Form Schema
 var level1_waste_reduction_schema = new mongoose.Schema({
     form_id : String,
+    form_user_email_id : String,
     limit_handouts_check : Boolean,
     limit_handouts_note : { type: String },
     teacher_webpages_check : Boolean,

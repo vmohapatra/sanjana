@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    
      //Vars to be used in client
      var 
         form = $('.form'),
@@ -56,6 +57,7 @@ $(document).ready(function(){
         var postData = {};
 
         postData.form_id = $(selectedForm).attr('id');
+        postData.form_user_email_id = userInfo.email;
 
         for (var i = 0; i < selectedForm.elements.length; i++) {
             if(selectedForm.elements[i].type == "radio" && selectedForm.elements[i].checked == true) {
@@ -102,7 +104,7 @@ $(document).ready(function(){
         $.ajax({
             type: "GET",
             url: "/fetchFormData",
-            data: { "form_id" : formId}
+            data: { "form_id" : formId, "form_user_email_id" : userInfo.email}
         })
         .done(function(data){
             console.log("GET successful for "+formId);
@@ -182,7 +184,7 @@ $(document).ready(function(){
 
                 doc = textToPdf(doc, $(formInteractedWith));
 
-                doc.save($(formInteractedWith).attr('id')+'.pdf');
+                doc.save('KCGS_'+$(formInteractedWith).attr('id')+'.pdf');
             });
         }        
     }
@@ -498,7 +500,6 @@ $(document).ready(function(){
 
     //Specify click behavior on navigation buttons 
     $(".progress ").click(function(){
-        console.log($(this).attr('class'));
         var clickedNavClass = $(this).attr('class');
         switch(clickedNavClass) {
             case "progress progress_1" :
@@ -508,10 +509,10 @@ $(document).ready(function(){
                 $("#progress_h2").click();
                 break;
             case "progress progress_3" :
-                $("#progress_h1").click();
+                $("#progress_h3").click();
                 break;
             case "progress progress_4" :
-                $("#progress_h1").click();
+                $("#progress_h4").click();
                 break;
             default :
                 //Do nothing;

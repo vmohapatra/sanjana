@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 // Create a Team Formation Form Schema
 var level1_team_formation_schema = new mongoose.Schema({
     form_id : String,
+    form_user_email_id : String,
     team_formation_check : Boolean,
     staff_1 : { type: String },
     staff_1_title : { type: String },

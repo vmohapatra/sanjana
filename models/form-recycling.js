@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 // Create a Assess and Monitor Form Schema
 var level1_recycling_schema = new mongoose.Schema({
     form_id : String,
+    form_user_email_id : String,
     recycling_classroom_check : Boolean,
     recycling_classroom_note : { type: String },
     recycling_office_check : Boolean,
