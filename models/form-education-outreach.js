@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 // Create a Assess and Monitor Form Schema
 var level1_education_outreach_schema = new mongoose.Schema({
     form_id : String,
+    form_user_email_id : String,
     introduce_student_staff_check : Boolean,
     introduce_student_staff_note : { type: String },
     regular_announcement_check : Boolean,
