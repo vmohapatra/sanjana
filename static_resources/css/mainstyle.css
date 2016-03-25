@@ -8,7 +8,9 @@ ul {
     list-style-type: none;
 }
 h2 {
-    color: #008000; /*green*/
+}
+i {
+    font-style: italic;
 }
 input {
     padding: 5px;
@@ -21,7 +23,9 @@ input {
 }
 /**********************Generic Component Styles**********************/
 .progress {
-    background-color: #FFFFFF; /*#FF6666;*/
+    background-color: #339900;
+    color: #FFFFFF;
+    text-align: center;
 }
 .create-pdf-button {
     background-color: #00b5ad;
@@ -96,10 +100,16 @@ input {
 #header_welcome {
     padding: 5px;
     display: inline-block;
+    float: left;
+}
+#header_welcome h2 {
+    color: #008000; /*green*/
+    font-size: 16px;
+    padding: 10px;
 }
 #header_progress {
     /*background-color: #FFA500; /*orange*/
-    padding: 5px;
+    /*padding: 5px;*/
     clear: both;
 }
 #header_progress .horizontal {
@@ -150,6 +160,8 @@ input {
     display: none;
     /*background-color: #FFC0CB; /*pink*/
     padding: 10px;
+    border: solid 0.25px #008000;
+    border-top: none;
 }
 .sublist_1_1_li input {
     margin-top: 10px;
@@ -164,7 +176,12 @@ input {
 .main_list li h3 {
     padding: 10px;
 }
-
+.hdr_l1 {
+    border: solid 0.25px #808080;
+}
+.hdr_l1_l1 {
+    border: solid 0.25px #808080;
+}
 .hdr_l1_active {
     background-color: #339900; /*green*/
 }
