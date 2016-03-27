@@ -85,8 +85,15 @@ textarea {
     color: #fff;
     text-shadow: none;
     background-image: none;
-    width: 90px;
-    padding: 2px;
+    min-width: 90px;
+    padding: 10px;
+    margin: 5px;
+    display: inline-block;
+    text-align: center;
+    border: none;
+    font-family: 'Century Gothic';
+    font-size: 16px;
+    
 }
 /**********************Header Section Styles**********************/
 #div_header {
