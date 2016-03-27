@@ -29,7 +29,7 @@ login.insertRegisteredUser = function(query, callback) {
                         //return res.status(500).send();
                     }
                     
-                    callback("successfully saved registered user", user);
+                    callback("successfully saved registered user", savedUser);
                     //return res.status(200).send();
                 });
             }

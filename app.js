@@ -50,13 +50,15 @@ app.get('/login', function (req, res) {
     //Insert registered user if not already present before rendering login page
     login.insertRegisteredUser(query, function(err, user){
         if(user) {
-            //Renders login.hbs from views/layouts folder
-            res.render(app.get('views') + '/layouts/'+ 'login');
+            console.log("successfully saved registered user");
         }
         else {
             console.log(err);
         }
     });
+    
+    //Renders login.hbs from views/layouts folder
+    res.render(app.get('views') + '/layouts/'+ 'login');
 });
 
 //get main view
