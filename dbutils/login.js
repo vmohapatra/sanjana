@@ -110,7 +110,7 @@ login.registerNewUser = function(req, callback) {
                 console.log("The email provide is already taken");
                 //res.redirect('/main');
                 req.session.user = user;
-                callback("The email provided for registration is already taken.",'/register');
+                callback("The email provided for registration is already taken.",'/register?invalidRegistrationEmail=true');
             }
             else {
                 console.log("Registration possible with this email");

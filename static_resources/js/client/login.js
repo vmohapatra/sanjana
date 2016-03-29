@@ -22,5 +22,12 @@ $(document).ready(function(){
             //invalidCredentials param exists as a url param at login
             $(".login_error").css("display","block");
     }
+    else if(
+        getParameterByName("invalidRegistrationEmail") != null 
+        && getParameterByName("invalidRegistrationEmail")=="true") {
+            //Display the registration error only if the 
+            //invalidRegistrationEmail param exists as a url param at registration
+            $(".register_error").css("display","block");
+    }
 
 });

@@ -13,12 +13,13 @@
         <div class="register">
             <h1>Register User for Web App</h1>
             <form method="post" action="/registerUser">
-              <p class="register_error">Could not register with provided details !</p>
+              <p class="register_error">Could not register with provided email. Please use another email to register !</p>
                 <p class="register_input_container"><input type="text" name="name" value="" placeholder="Register User Name"></p>
                 <p class="register_input_container"><input type="text" name="email" value="" placeholder="Register User Email"></p>
                 <p class="register_input_container"><input type="password" name="password" value="" placeholder="Register Password"></p>
                 <p class="register_submit_container">
-                <input type="submit" name="submit" value="Register"/>
+                    <input type="submit" name="submit" value="Register"/>
+                    <input type="submit" name="submit" value="Log in"/>
                 </p>
             </form>
           

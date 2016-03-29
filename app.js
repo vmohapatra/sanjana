@@ -163,8 +163,10 @@ app.get('/register', function (req, res) {
 
 // POST method for register new user
 app.post('/registerUser', function (req, res) {
-    console.log("received a request to register a new user in the app.");
-    login.registerNewUser(req, function(msg, redirectLink) {
+    
+    if(req.body.submit == "Register") {
+        console.log("received a request to register a new user in the app.");
+        login.registerNewUser(req, function(msg, redirectLink) {
             if(redirectLink) {
                 console.log(msg);
                 console.log(redirectLink);
@@ -173,7 +175,11 @@ app.post('/registerUser', function (req, res) {
             else {
                 console.log(msg);
             }
-    });
+        });    
+    }
+    else if(req.body.submit == "Log in") {
+        res.redirect('/login');
+    }
 });
 
 // POST method to save form data to db
