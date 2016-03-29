@@ -169,7 +169,6 @@ app.post('/registerUser', function (req, res) {
         login.registerNewUser(req, function(msg, redirectLink) {
             if(redirectLink) {
                 console.log(msg);
-                console.log(redirectLink);
                 res.redirect(redirectLink);
             }
             else {
