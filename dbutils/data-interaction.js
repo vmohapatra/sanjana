@@ -49,7 +49,7 @@ dataInteraction.saveForm = function(req, callback) {
 
     console.log(schema.name);
     
-    db[schema.name].findOne({form_id:req.body.form_id},function(err, form){
+    db[schema.name].findOne({form_id:req.body.form_id, form_user_email_id:req.body.form_user_email_id},function(err, form){
         if(err) {
             console.log("Error in retrieving form data from db");
             callback(err);

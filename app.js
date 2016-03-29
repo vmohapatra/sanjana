@@ -47,18 +47,35 @@ app.get('/', function (req, res) {
 
 app.get('/login', function (req, res) {
     var query = req.query;
-    //Insert registered user if not already present before rendering login page
-    login.insertRegisteredUser(query, function(err, user){
-        if(user) {
-            console.log("successfully saved registered user");
-        }
-        else {
-            console.log(err);
-        }
-    });
+    if(!req.session.user) {
+        //Insert registered user if not already present before rendering login page
+        login.insertRegisteredUser(query, function(msg, user){
+            if(user) {
+                console.log(msg);
+                console.log(user);
+            }
+            else {
+                console.log(msg);
+            }
+        });
+    }
+    else {
+        req.session.destroy(function(err){
+            if(err) {
+                console.log("Error while destroying session");
+            }
+            else {
+                // req.session is now undefined
+                console.log("Successfully closed any previous sessions for the app.");
+                console.log("Redirecting to login page for new session");
+            }
+        });
+    }
     
     //Renders login.hbs from views/layouts folder
-    res.render(app.get('views') + '/layouts/'+ 'login');
+    res.render(
+        app.get('views') + '/layouts/'+ 'login'
+    );
 });
 
 //get main view
@@ -66,7 +83,7 @@ app.get('/main', function (req, res) {
     if(req.session.user) {
         //If logged in
         console.log("Valid session. User logged in.");
-        login.getUserInfo(req, function(err, user){
+        login.getUserInfo(req, function(msg, user){
             //TODO : Differentiate between different users and accordingly redirect them to different views
             if(user) {
                 //Renders main.hbs from views/layouts folder
@@ -76,8 +93,10 @@ app.get('/main', function (req, res) {
                 );
             }
             else {
-                console.log(err);
-                res.send(err);
+                console.log(msg);
+                res.render(
+                    app.get('views') + '/layouts/'+ 'main'
+                );
             }
         });
     }
@@ -99,15 +118,23 @@ app.listen(config.http_port, function () {
 // POST method for login
 app.post('/login', function (req, res) {
     //console.log("POSTBODY: " + JSON.stringify(req.body));
-    login.authenticateCredentials(req, function(err, redirectLink) {
-        if(redirectLink) {
-            res.redirect(redirectLink);
-        }
-        else {
-            console.log(err);
-            res.send(err);
-        }
-    });
+    
+    if(req.body.submit == "Log in") {
+        //If user requested a login, authenticate
+        login.authenticateCredentials(req, function(err, redirectLink) {
+            if(redirectLink) {
+                res.redirect(redirectLink);
+            }
+            else {
+                console.log(err);
+                //res.send(err);
+            }
+        });
+    }
+    else if(req.body.submit == "Register user") {
+        //User requested to register a new user
+        res.redirect('/register');
+    }
 });
 
 // POST method for logout
@@ -128,6 +155,26 @@ app.post('/logout', function (req, res) {
     });
 });
 
+// GET method for register new user
+app.get('/register', function (req, res) {
+    res.render(app.get('views') + '/layouts/'+ 'register');
+    
+});
+
+// POST method for register new user
+app.post('/registerUser', function (req, res) {
+    console.log("received a request to register a new user in the app.");
+    login.registerNewUser(req, function(msg, redirectLink) {
+            if(redirectLink) {
+                console.log(msg);
+                console.log(redirectLink);
+                res.redirect(redirectLink);
+            }
+            else {
+                console.log(msg);
+            }
+    });
+});
 
 // POST method to save form data to db
 app.post('/saveFormData', function (req, res) {

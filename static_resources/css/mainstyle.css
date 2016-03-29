@@ -63,21 +63,21 @@ textarea {
     display: inline-block;
     text-align: center;
 }
-/**********************Login Page Styles**********************/
-.login_content {
+/**********************Login and Register Page Styles**********************/
+.login_content, .register_content {
     text-align: center;
 }
-.login_error {
+.login_error, .register_error {
     display: none;
     color: red;
 }
-.login h1 {
+.login h1, .register h1 {
     margin-bottom: 5px;    
 }
-.login_input_container {
+.login_input_container, .register_input_container {
     padding: 5px;
 }
-.login_submit_container {
+.login_submit_container, .register_submit_container {
     padding: 5px;
 }
 .login_submit_container input {
@@ -93,7 +93,19 @@ textarea {
     border: none;
     font-family: 'Century Gothic';
     font-size: 16px;
-    
+}
+.register_submit_container input {
+    background-color: #00b5ad;
+    color: #fff;
+    text-shadow: none;
+    background-image: none;
+    min-width: 90px;
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
+    font-family: 'Century Gothic';
+    font-size: 16px;
+    border: none;
 }
 /**********************Header Section Styles**********************/
 #div_header {

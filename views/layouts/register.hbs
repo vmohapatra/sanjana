@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<title>KCGS Register User</title>
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/mainstyle.css">
+    <script src="/static/js/lib/jquery-1.12.0.min.js"></script>
+</head>
+<body>
+    <div id="div_header">
+    </div>
+    <div id="div_content" class="register_content">
+        <div class="register">
+            <h1>Register User for Web App</h1>
+            <form method="post" action="/registerUser">
+              <p class="register_error">Could not register with provided details !</p>
+                <p class="register_input_container"><input type="text" name="name" value="" placeholder="Register User Name"></p>
+                <p class="register_input_container"><input type="text" name="email" value="" placeholder="Register User Email"></p>
+                <p class="register_input_container"><input type="password" name="password" value="" placeholder="Register Password"></p>
+                <p class="register_submit_container">
+                <input type="submit" name="submit" value="Register"/>
+                </p>
+            </form>
+          
+        </div>
+    </div>
+    <div id="div_footer"></div>
+    <script src="/static/js/client/login.js"></script>
+</body>
+</html>

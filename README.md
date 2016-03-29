@@ -34,11 +34,13 @@ Additional info to debug mongo :
 
 * To see what is on mongo db for the app:
 
-1) Open a new cmd window after starting mongo server in the above step, type
+1) Open a new cmd window after starting mongo server in the above step,  On Mac type
 
 ````
 $ mongo
 ````
+
+In Windows, go to the folder having mongo.exe and run mongo.exe as an administrator which should open a command prompt.
 
 2) To see database being used
 ````
