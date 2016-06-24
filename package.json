@@ -14,10 +14,10 @@
         "Managing",
         "System"
     ],
-    "author": "",
+    "author": "vmohapatra",
     "repository": {
-    "type": "git",
-    "url": "git://github.com/vmohapatra/sanjana.git"
+        "type": "git",
+        "url": "git://github.com/vmohapatra/sanjana.git"
     },
     "license": "MIT",
     "dependencies": {
