@@ -49,42 +49,46 @@ dataInteraction.saveForm = function(req, callback) {
 
     console.log(schema.name);
     
-    db[schema.name].findOne({form_id:req.body.form_id, form_user_email_id:req.body.form_user_email_id},function(err, form){
-        if(err) {
-            console.log("Error in retrieving form data from db");
-            callback(err);
-        }
-
-        var formLength = Object.keys(req.body).length;
-        if(!form) {
-            console.log("No form info present in db");
-            form = schema.instance;
-
-            for(var key in req.body) {
-                form[key] = req.body[key];
-            }
-        }
-        else {
-            console.log("**Form info exists in db**");
-
-            for(var key in req.body) {
-                form[key] = req.body[key];
-            }
-
-            console.log(form);
-        }
-
-        form.save(function(err, savedUser){
+    db[schema.name].findOne(
+        {
+            form_id : req.body.form_id, 
+            form_user_email_id : req.body.form_user_email_id
+        },
+        function(err, form){
             if(err) {
-                console.log("Error in saving the form data");
+                console.log("Error in retrieving form data from db");
                 callback(err);
             }
 
-            callback("successfully saved form data", form);
-        });
+            var formLength = Object.keys(req.body).length;
+            if(!form) {
+                console.log("No form info present in db");
+                form = schema.instance;
 
-    });
-    
+                for(var key in req.body) {
+                    form[key] = req.body[key];
+                }
+            }
+            else {
+                console.log("**Form info exists in db**");
+
+                for(var key in req.body) {
+                    form[key] = req.body[key];
+                }
+
+                console.log(form);
+            }
+
+            form.save(function(err, savedUser){
+                if(err) {
+                    console.log("Error in saving the form data");
+                    callback(err);
+                }
+
+                callback("successfully saved form data", form);
+            });
+        }
+    );
 };
 
 dataInteraction.fetchForm = function(req, callback) {
@@ -92,17 +96,22 @@ dataInteraction.fetchForm = function(req, callback) {
     var schema = getFormSchema(req.query.form_id);
 
     console.log(schema.name);
-    db[schema.name].findOne({form_id:req.query.form_id, form_user_email_id:req.query.form_user_email_id}, function(err, form){
-        if(err) {
-            console.log("Error in retrieving form data from db");
-            callback(err);
+    db[schema.name].findOne(
+        {
+            form_id:req.query.form_id, 
+            form_user_email_id:req.query.form_user_email_id
+        }, 
+        function(err, form){
+            if(err) {
+                console.log("Error in retrieving form data from db");
+                callback(err);
+            }
+            else {
+                console.log("**Form info exists in db**");
+                callback(err, form);
+            }
         }
-        else {
-            console.log("**Form info exists in db**");
-            callback(err, form);
-        }
-    });
-
+    );
 };
 
 module.exports = dataInteraction;
